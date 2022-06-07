@@ -15,6 +15,7 @@
 		1E89F164284FD56E00655DB1 /* TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89F163284FD56E00655DB1 /* TrackerUITests.swift */; };
 		1E89F166284FD56E00655DB1 /* TrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89F165284FD56E00655DB1 /* TrackerUITestsLaunchTests.swift */; };
 		1E89F173284FDD1300655DB1 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89F172284FDD1300655DB1 /* Food.swift */; };
+		1E89F175284FE23D00655DB1 /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89F174284FE23D00655DB1 /* AddFoodView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		1E89F163284FD56E00655DB1 /* TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerUITests.swift; sourceTree = "<group>"; };
 		1E89F165284FD56E00655DB1 /* TrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1E89F172284FDD1300655DB1 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		1E89F174284FE23D00655DB1 /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			children = (
 				1E89F148284FD56D00655DB1 /* TrackerApp.swift */,
 				1E89F14A284FD56D00655DB1 /* WelcomeView.swift */,
+				1E89F174284FE23D00655DB1 /* AddFoodView.swift */,
 				1E89F172284FDD1300655DB1 /* Food.swift */,
 				1E89F14C284FD56E00655DB1 /* Assets.xcassets */,
 				1E89F14E284FD56E00655DB1 /* Preview Content */,
@@ -260,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E89F175284FE23D00655DB1 /* AddFoodView.swift in Sources */,
 				1E89F14B284FD56D00655DB1 /* WelcomeView.swift in Sources */,
 				1E89F149284FD56D00655DB1 /* TrackerApp.swift in Sources */,
 				1E89F173284FDD1300655DB1 /* Food.swift in Sources */,

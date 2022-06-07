@@ -13,8 +13,8 @@ struct WelcomeView: View {
             VStack{
                 NutritionView(caloriesAllowed: 2000, caloriesConsumed: 100)
                     .navigationTitle("Nutrition Facts")
-                NavigationLink(destination: Text("Food List"), label: {
-                    Text("Add Food")
+                NavigationLink(destination: AddFoodView().navigationTitle("Add Food"), label: {
+                    Text("Add Food To List")
                 })
             }
         }
@@ -27,6 +27,8 @@ struct NutritionView: View {
     var caloriesAllowed: Int
     var caloriesConsumed : Int
     
+    //gets the percetage of hoe many calories you've eaten compared
+    //to how much you are alowed to eat in a day
     func getPercentage()->Float{
         return Float(caloriesConsumed)/Float(caloriesAllowed)
     }
@@ -48,6 +50,7 @@ struct NutritionView: View {
                 ProgressView(value: 0.5)
             }
             .padding()
+            //add better styling
             .border(.black)
         }
         .padding()
