@@ -11,7 +11,7 @@ struct WelcomeView: View {
     var body: some View {
         NavigationView{
             VStack{
-                NutritionView()
+                NutritionView(caloriesAllowed: 2000, caloriesConsumed: 100)
                     .navigationTitle("Nutrition Facts")
                 NavigationLink(destination: Text("Food List"), label: {
                     Text("Add Food")
@@ -19,12 +19,38 @@ struct WelcomeView: View {
             }
         }
     }
+
 }
 
 struct NutritionView: View {
+    
+    var caloriesAllowed: Int
+    var caloriesConsumed : Int
+    
+    func getPercentage()->Float{
+        return Float(caloriesConsumed)/Float(caloriesAllowed)
+    }
+    
     var body: some View {
-        Text("Hello, world!")
+        var caloriesLeft = caloriesAllowed - caloriesConsumed
+        VStack{
+            Text("Calories Left: " + String(caloriesAllowed - caloriesConsumed))
+            ProgressView(value: getPercentage())
+                .padding()
+            VStack{
+                Text("Protein")
+                ProgressView(value: 0.5)
+                
+                Text("Carbs")
+                ProgressView(value: 0.5)
+                
+                Text("Fat")
+                ProgressView(value: 0.5)
+            }
             .padding()
+            .border(.black)
+        }
+        .padding()
     }
 }
 
@@ -33,3 +59,5 @@ struct ContentView_Previews: PreviewProvider {
         WelcomeView()
     }
 }
+
+
