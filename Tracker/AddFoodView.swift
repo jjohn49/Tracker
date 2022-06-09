@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddFoodView: View {
     
-    //connects the variables from the view with the variable that has @State
+    //This means you expect an enviorment variable to be passed but do not create one
     @EnvironmentObject var foodConsumedList: FoodCosumedList
     
     
@@ -32,6 +32,7 @@ struct AddFoodView: View {
 
 struct AddFoodView_Previews: PreviewProvider {
     static var previews: some View {
-        AddFoodView()
+        //should update the previews when creating an enviorment object
+        AddFoodView().environmentObject(FoodCosumedList())
     }
 }

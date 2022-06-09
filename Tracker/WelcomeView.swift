@@ -8,8 +8,10 @@
 import SwiftUI
 
 //creates the enviorment variable that can be shared throughout views
+// all enviorment variables have to conform to the OBServableObject class
 class FoodCosumedList: ObservableObject{
     @Published var foodCosumedListVar: [Food] = []
+    
 }
 
 struct WelcomeView: View {
@@ -24,9 +26,11 @@ struct WelcomeView: View {
                 foodCosumedView()
                 NavigationLink(destination: AddFoodView().navigationTitle("Add Food"), label: {
                     Text("Add Food To List")
-                })
+                }).padding()
             }
         }
+        //put the variable foodListConsumed which is part of the custom class so that
+        //all views within the navigation view have access to the variable
         .environmentObject(foodListConsumed)
     }
 
@@ -47,6 +51,7 @@ struct foodCosumedView: View{
 
 struct NutritionView: View {
     
+    //maybe make these enviorment variables so that they can be changed by multiple views
     var caloriesAllowed: Int
     var caloriesConsumed : Int
     
