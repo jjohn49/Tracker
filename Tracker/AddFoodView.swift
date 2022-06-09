@@ -12,8 +12,15 @@ struct AddFoodView: View {
     var body: some View {
         VStack{
             //need the id stuff because it is a custom structure
+            //this takes everything in foodlist and puts it in the list
             List(foodInList, id: \.id) { food in
-                Text(food.name)
+                VStack{
+                    NavigationLink(destination: FoodDetail(food: food).navigationTitle(food.name), label: {
+                        Text(food.name)
+                    })
+                        .padding()
+                    //Button(action: <#T##() -> Void#>, label: <#T##() -> _#>)
+                }
             }
         }
     }
