@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct AddFoodView: View {
+    
+    //connects the variables from the view with the variable that has @State
+    @EnvironmentObject var foodConsumedList: FoodCosumedList
+    
+    
     var foodInList: [Food] = FoodList.list
     var body: some View {
         VStack{
@@ -19,7 +24,6 @@ struct AddFoodView: View {
                         Text(food.name)
                     })
                         .padding()
-                    //Button(action: <#T##() -> Void#>, label: <#T##() -> _#>)
                 }
             }
         }

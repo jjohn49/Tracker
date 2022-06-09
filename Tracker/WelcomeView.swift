@@ -7,19 +7,42 @@
 
 import SwiftUI
 
+//creates the enviorment variable that can be shared throughout views
+class FoodCosumedList: ObservableObject{
+    @Published var foodCosumedListVar: [Food] = []
+}
+
 struct WelcomeView: View {
+    
+    @StateObject var foodListConsumed = FoodCosumedList()
+    
     var body: some View {
         NavigationView{
             VStack{
                 NutritionView(caloriesAllowed: 2000, caloriesConsumed: 100)
                     .navigationTitle("Nutrition Facts")
+                foodCosumedView()
                 NavigationLink(destination: AddFoodView().navigationTitle("Add Food"), label: {
                     Text("Add Food To List")
                 })
             }
         }
+        .environmentObject(foodListConsumed)
     }
 
+}
+
+struct foodCosumedView: View{
+    
+    @EnvironmentObject var foodCosumedList: FoodCosumedList
+    
+    
+    var body: some View{
+        
+        List(foodCosumedList.foodCosumedListVar, id: \.id) { foodConsumed in
+            Text(foodConsumed.name)
+        }
+    }
 }
 
 struct NutritionView: View {
