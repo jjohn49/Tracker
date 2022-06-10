@@ -21,14 +21,19 @@ struct FoodDetail: View {
             Text("Carbs: " + String(food.carbs))
             Text("Fat: " + String(food.fat))
             Button(action: {
-                foodEnvVar.foodCosumedListVar.append(food)
-                foodEnvVar.totalCaloriesConsumedInADay += food.calories
-                print(foodEnvVar.foodCosumedListVar)
-                print("Added food to the enviorment variable")
+                updateFoodEnvVars(food: food)
             }, label: {
                 Text("Add " + food.name + " To The Food Consumed List")
             })
         }
+    }
+    
+    func updateFoodEnvVars(food:Food){
+        foodEnvVar.foodCosumedListVar.append(food)
+        foodEnvVar.totalCaloriesConsumedInADay += food.calories
+        foodEnvVar.totalProteinConsumedInADay += food.protein
+        foodEnvVar.totalCarbsConsumedInADay += food.carbs
+        foodEnvVar.totalFatConsumedInADay += food.fat
     }
 }
 
@@ -37,3 +42,5 @@ struct FoodDetail_Previews: PreviewProvider {
         FoodDetail(food: FoodList.list[0])
     }
 }
+
+
