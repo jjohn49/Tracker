@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FoodDetail: View {
     
-    @EnvironmentObject var foodListConsumed: FoodCosumedList
+    @EnvironmentObject var foodEnvVar: FoodEnvVar
     
     var food: Food
     
@@ -21,8 +21,9 @@ struct FoodDetail: View {
             Text("Carbs: " + String(food.carbs))
             Text("Fat: " + String(food.fat))
             Button(action: {
-                foodListConsumed.foodCosumedListVar.append(food)
-                print(foodListConsumed.foodCosumedListVar)
+                foodEnvVar.foodCosumedListVar.append(food)
+                foodEnvVar.totalCaloriesConsumedInADay += food.calories
+                print(foodEnvVar.foodCosumedListVar)
                 print("Added food to the enviorment variable")
             }, label: {
                 Text("Add " + food.name + " To The Food Consumed List")
