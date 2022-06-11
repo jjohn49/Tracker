@@ -50,8 +50,22 @@ struct foodCosumedView: View{
     
     var body: some View{
         
-        List(foodEnvVar.foodCosumedListVar, id: \.id) { foodConsumed in
-            Text(foodConsumed.name)
+        List {
+            ForEach(foodEnvVar.foodCosumedListVar) { food in
+                Text(food.name)
+            }
+            .onDelete { indexSet in
+                let index = indexSet[indexSet.startIndex]
+                let foodToDelete: Food = foodEnvVar.foodCosumedListVar[index]
+                foodEnvVar.foodCosumedListVar.remove(atOffsets: indexSet)
+                foodEnvVar.totalCaloriesConsumedInADay -= foodToDelete.calories
+                foodEnvVar.totalProteinConsumedInADay -= foodToDelete.protein
+                foodEnvVar.totalCarbsConsumedInADay -= foodToDelete.carbs
+                foodEnvVar.totalFatConsumedInADay -= foodToDelete.fat
+                
+            }
+            
+                
         }
     }
 }
