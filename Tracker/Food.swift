@@ -13,6 +13,7 @@ struct Food: Identifiable {
     let id = UUID()
     let name: String
     let servingSize: String
+    var numOfServ: Int = 1
     let calories: Int
     let protein: Int
     let carbs: Int

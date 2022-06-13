@@ -31,7 +31,13 @@ struct WelcomeView: View {
                 NutritionView(caloriesAllowed: foodEnvVar.totalCaloriesAllowedInADat, caloriesConsumed: foodEnvVar.totalCaloriesConsumedInADay, proteinConsumed: foodEnvVar.totalProteinConsumedInADay, carbsConsumed: foodEnvVar.totalCarbsConsumedInADay, fatsConsumed: foodEnvVar.totalFatConsumedInADay)
                     .navigationTitle("Nutrition Facts")
                 foodCosumedView()
-                NavigationLink(destination: AddFoodView().navigationTitle("Add Food"), label: {
+                NavigationLink(destination: AddFoodView().navigationTitle("Add Food") .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing, content: {
+                        NavigationLink(destination: /*placeholder for right now*/ AddFoodView().navigationTitle("Add Custom Food"), label: {
+                            Text("Add Custom Food")
+                        })
+                    })
+                }, label: {
                     Text("Add Food To List")
                 }).padding()
             }
@@ -58,10 +64,10 @@ struct foodCosumedView: View{
                 let index = indexSet[indexSet.startIndex]
                 let foodToDelete: Food = foodEnvVar.foodCosumedListVar[index]
                 foodEnvVar.foodCosumedListVar.remove(atOffsets: indexSet)
-                foodEnvVar.totalCaloriesConsumedInADay -= foodToDelete.calories
-                foodEnvVar.totalProteinConsumedInADay -= foodToDelete.protein
-                foodEnvVar.totalCarbsConsumedInADay -= foodToDelete.carbs
-                foodEnvVar.totalFatConsumedInADay -= foodToDelete.fat
+                foodEnvVar.totalCaloriesConsumedInADay -= foodToDelete.calories * foodToDelete.numOfServ
+                foodEnvVar.totalProteinConsumedInADay -= foodToDelete.protein * foodToDelete.numOfServ
+                foodEnvVar.totalCarbsConsumedInADay -= foodToDelete.carbs * foodToDelete.numOfServ
+                foodEnvVar.totalFatConsumedInADay -= foodToDelete.fat * foodToDelete.numOfServ
                 
             }
             
