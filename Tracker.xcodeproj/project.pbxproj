@@ -109,10 +109,10 @@
 				1E89F174284FE23D00655DB1 /* AddFoodView.swift */,
 				1E3D2F1D2852A15600E4BC3C /* FoodDetail.swift */,
 				1E1B72AB28577F9100CE4CBB /* CreateCustomFood.swift */,
+				1EB6D1F62857F7B000893FF8 /* FoodConsumedRow.swift */,
 				1E89F172284FDD1300655DB1 /* Food.swift */,
 				1E89F14C284FD56E00655DB1 /* Assets.xcassets */,
 				1E89F14E284FD56E00655DB1 /* Preview Content */,
-				1EB6D1F62857F7B000893FF8 /* FoodConsumedRow.swift */,
 			);
 			path = Tracker;
 			sourceTree = "<group>";
@@ -492,6 +492,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5PWVWU8526;
@@ -512,6 +513,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5PWVWU8526;

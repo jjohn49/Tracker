@@ -8,9 +8,11 @@ import Foundation
 //import SwiftUI
 
 //make identifiable so we can throw it in a for loop for the list
-struct Food: Identifiable {
+//making Food consorm to codable inorder to store it in NSUserDefaults
+//Using JSON
+struct Food: Identifiable, Codable {
     //id is necessary for structures that conform to Identifiable
-    let id = UUID()
+    var id = UUID()
     let name: String
     let servingSize: String
     var numOfServ: Int = 1
