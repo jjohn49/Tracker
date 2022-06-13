@@ -19,6 +19,7 @@ class FoodEnvVar: ObservableObject{
     @Published var totalCarbsConsumedInADay: Int = 0
     @Published var totalFatConsumedInADay: Int = 0
     
+    
 }
 
 struct WelcomeView: View {
@@ -33,7 +34,7 @@ struct WelcomeView: View {
                 foodCosumedView()
                 NavigationLink(destination: AddFoodView().navigationTitle("Add Food") .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing, content: {
-                        NavigationLink(destination: /*placeholder for right now*/ AddFoodView().navigationTitle("Add Custom Food"), label: {
+                        NavigationLink(destination: /*placeholder for right now*/ CreateCustomFood().navigationTitle("Add Custom Food"), label: {
                             Text("Add Custom Food")
                         })
                     })
@@ -58,7 +59,7 @@ struct foodCosumedView: View{
         
         List {
             ForEach(foodEnvVar.foodCosumedListVar) { food in
-                Text(food.name)
+                FoodConsumedRow(food: food)
             }
             .onDelete { indexSet in
                 let index = indexSet[indexSet.startIndex]
@@ -68,7 +69,6 @@ struct foodCosumedView: View{
                 foodEnvVar.totalProteinConsumedInADay -= foodToDelete.protein * foodToDelete.numOfServ
                 foodEnvVar.totalCarbsConsumedInADay -= foodToDelete.carbs * foodToDelete.numOfServ
                 foodEnvVar.totalFatConsumedInADay -= foodToDelete.fat * foodToDelete.numOfServ
-                
             }
             
                 

@@ -18,6 +18,7 @@
 		1E89F166284FD56E00655DB1 /* TrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89F165284FD56E00655DB1 /* TrackerUITestsLaunchTests.swift */; };
 		1E89F173284FDD1300655DB1 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89F172284FDD1300655DB1 /* Food.swift */; };
 		1E89F175284FE23D00655DB1 /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89F174284FE23D00655DB1 /* AddFoodView.swift */; };
+		1EB6D1F72857F7B000893FF8 /* FoodConsumedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB6D1F62857F7B000893FF8 /* FoodConsumedRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		1E89F165284FD56E00655DB1 /* TrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1E89F172284FDD1300655DB1 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		1E89F174284FE23D00655DB1 /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
+		1EB6D1F62857F7B000893FF8 /* FoodConsumedRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodConsumedRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				1E89F172284FDD1300655DB1 /* Food.swift */,
 				1E89F14C284FD56E00655DB1 /* Assets.xcassets */,
 				1E89F14E284FD56E00655DB1 /* Preview Content */,
+				1EB6D1F62857F7B000893FF8 /* FoodConsumedRow.swift */,
 			);
 			path = Tracker;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				1E1B72AC28577F9100CE4CBB /* CreateCustomFood.swift in Sources */,
 				1E3D2F1E2852A15600E4BC3C /* FoodDetail.swift in Sources */,
 				1E89F149284FD56D00655DB1 /* TrackerApp.swift in Sources */,
+				1EB6D1F72857F7B000893FF8 /* FoodConsumedRow.swift in Sources */,
 				1E89F173284FDD1300655DB1 /* Food.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

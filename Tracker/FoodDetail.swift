@@ -11,7 +11,7 @@ struct FoodDetail: View {
     
     @EnvironmentObject var foodEnvVar: FoodEnvVar
     
-     @State var food: Food
+    @State var food: Food
     
     var body: some View {
         VStack{

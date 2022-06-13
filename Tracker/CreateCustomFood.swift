@@ -11,19 +11,22 @@ struct CreateCustomFood: View {
     
     @State var foodName: String = ""
     @State var foodServingSize: String = ""
+    @State var foodAmount: Int = 0
     @State var foodCals: Int = 0
     @State var foodPro: Int = 0
     @State var foodCarbs: Int = 0
     @State var foodFat: Int = 0
     
+    @EnvironmentObject var foodEnvVar: FoodEnvVar
+    
     var body: some View {
         VStack{
-            inputFoodDetails(foodName: $foodName, foodServingSize: $foodServingSize, foodCals: $foodCals, foodPro: $foodPro, foodCarbs: $foodCarbs, foodFat: $foodFat)
+            inputFoodDetails(foodName: $foodName, foodServingSize: $foodServingSize, foodAmount: $foodAmount, foodCals: $foodCals, foodPro: $foodPro, foodCarbs: $foodCarbs, foodFat: $foodFat)
             Button (action: {
-                let food: Food = createFood()
-                print("Worked")
+                updateFoodEnvVars(food: createFood())
+                //maybe add soemthing that will send this to the database
             }, label: {
-                Text("Create Custom Food")
+                Text("Create and Add Custom Food")
             })
             
         }.padding()
@@ -31,18 +34,26 @@ struct CreateCustomFood: View {
     func createFood() -> Food{
         return Food(name: foodName, servingSize: foodServingSize, calories: foodCals, protein: foodPro, carbs: foodCarbs, fat: foodFat)
     }
+    
+    func updateFoodEnvVars(food:Food){
+        foodEnvVar.foodCosumedListVar.append(food)
+        foodEnvVar.totalCaloriesConsumedInADay += food.calories * food.numOfServ
+        foodEnvVar.totalProteinConsumedInADay += food.protein * food.numOfServ
+        foodEnvVar.totalCarbsConsumedInADay += food.carbs * food.numOfServ
+        foodEnvVar.totalFatConsumedInADay += food.fat * food.numOfServ
+    }
 }
 
 struct inputFoodDetails: View{
     @Binding var foodName: String
     @Binding  var foodServingSize: String
+    @Binding var foodAmount: Int
     @Binding  var foodCals: Int
     @Binding  var foodPro: Int
     @Binding  var foodCarbs: Int
     @Binding  var foodFat: Int
     var body: some View{
-        TextField(" Food Name", text: $foodName).padding()
-        TextField(" Serving Size", text: $foodServingSize).padding()
+       NameServingSizeAndAmount(name: $foodName, servingSize: $foodServingSize, amount: $foodAmount)
         Text("Calories")
         TextField("Calories",value: $foodCals, formatter: NumberFormatter())
         Text("Protein")
@@ -51,6 +62,19 @@ struct inputFoodDetails: View{
         TextField("Carbs",value: $foodCarbs, formatter: NumberFormatter())
         Text("Fat")
         TextField("Fat",value: $foodFat, formatter: NumberFormatter())
+    }
+}
+
+struct NameServingSizeAndAmount: View{
+     @Binding var name: String
+    @Binding var servingSize: String
+     @Binding var amount: Int
+    
+    var body: some View{
+        TextField("Food Name", text: $name).padding()
+        TextField("Serving Size", text: $servingSize).padding()
+        Text("Amount")
+        TextField("Food Amount", value: $amount, formatter: NumberFormatter())
     }
 }
 
