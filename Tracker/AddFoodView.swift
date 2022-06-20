@@ -27,6 +27,8 @@ struct AddFoodView: View {
                         .padding()
                 }
             }*/
+            
+            //Add a search bar that takes the user input and sends it to the api
             List{
                 ForEach(hits.foodSearchRespnse, id: \.self){ hit in
                     let tempFood = Food(name: hit.fields.item_name, servingSize: hit.fields.nf_serving_size_unit, calories: Int(hit.fields.nf_calories), protein: Int(hit.fields.nf_protein), carbs: Int(hit.fields.nf_total_carbohydrate), fat: Int(hit.fields.nf_total_fat))
