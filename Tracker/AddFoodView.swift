@@ -14,6 +14,10 @@ struct AddFoodView: View {
     
     @StateObject var hits = FoodResponse()
     
+    @State var searchFood = ""
+    
+    @State var searching = false
+    
     var foodInList: [Food] = FoodList.list
     var body: some View {
         VStack{
@@ -29,26 +33,71 @@ struct AddFoodView: View {
             }*/
             
             //Add a search bar that takes the user input and sends it to the api
+            
+            VStack(alignment: .leading) {
+                SearchBar(searchFood: $searchFood, searching: $searching, hits: hits)
+                    .navigationTitle(searching ? "Searching Food" : (searchFood.isEmpty ? "Search A Food" : searchFood))
+                    .toolbar{
+                        if searching {
+                            Button("Cancel") {
+                                searchFood = ""
+                                withAnimation{
+                                    searching = false
+                                }
+                            }
+                        }
+                    }
+            }
             List{
                 ForEach(hits.foodSearchRespnse, id: \.self){ hit in
                     let tempFood = Food(name: hit.fields.item_name, servingSize: hit.fields.nf_serving_size_unit, calories: Int(hit.fields.nf_calories), protein: Int(hit.fields.nf_protein), carbs: Int(hit.fields.nf_total_carbohydrate), fat: Int(hit.fields.nf_total_fat))
                     AddFoodRow(food: tempFood)
                 }
-            }.onAppear {
+            }/*.onAppear {
                 print("Did this start?")
                 hits.getResponse()
                 print("ended")
-            }
+            }*/
         }
     }
 }
     
 
 
-
 struct AddFoodView_Previews: PreviewProvider {
     static var previews: some View {
         //should update the previews when creating an enviorment object
         AddFoodView().environmentObject(FoodEnvVar())
+    }
+}
+
+struct SearchBar: View {
+    @Binding var searchFood: String
+    @Binding var searching: Bool
+    @ObservedObject var hits: FoodResponse
+    var body: some View {
+        ZStack{
+            Rectangle().foregroundColor(.mint)
+            HStack {
+                Image(systemName: "magnifyingglass")
+                TextField("Search Food..", text: $searchFood) { startedEditing in
+                    if startedEditing {
+                        withAnimation {
+                            searching = true
+                        }
+                    }
+                }.onSubmit {
+                    withAnimation{
+                        searching = false
+                    }
+                    hits.getResponse(food: searchFood)
+                }
+            }
+            .foregroundColor(.gray)
+            .padding(.leading, 13)
+        }
+        .frame(height: 40)
+        .cornerRadius(13)
+        .padding()
     }
 }
