@@ -27,21 +27,20 @@ struct WelcomeView: View {
     @StateObject var foodEnvVar = FoodEnvVar()
     
     var body: some View {
-        NavigationView{
-            VStack{
+        TabView{
                 NutritionView(caloriesAllowed: foodEnvVar.totalCaloriesAllowedInADat, caloriesConsumed: foodEnvVar.totalCaloriesConsumedInADay, proteinConsumed: foodEnvVar.totalProteinConsumedInADay, carbsConsumed: foodEnvVar.totalCarbsConsumedInADay, fatsConsumed: foodEnvVar.totalFatConsumedInADay)
-                    .navigationTitle("Nutrition Facts")
+                .tabItem{
+                    Label("Goals", systemImage: "leaf.circle")
+                }
                 foodCosumedView()
-                NavigationLink(destination: AddFoodView().navigationTitle("Add Food") .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing, content: {
-                        NavigationLink(destination: /*placeholder for right now*/ CreateCustomFood().navigationTitle("Add Custom Food"), label: {
-                            Text("Add Custom Food")
-                        })
-                    })
-                }, label: {
-                    Text("Add Food To List")
-                }).padding()
-            }
+                .tabItem{
+                    Label("Food Consumed", systemImage: "pills.circle")
+                }
+                AddFoodView()
+                .tabItem{
+                    Label("Add Food", systemImage: "cross.circle")
+                }
+            
         }
         //put the variable foodListConsumed which is part of the custom class so that
         //all views within the navigation view have access to the variable

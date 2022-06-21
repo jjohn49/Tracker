@@ -20,49 +20,35 @@ struct AddFoodView: View {
     
     var foodInList: [Food] = FoodList.list
     var body: some View {
-        VStack{
-            //need the id stuff because it is a custom structure
-            //this takes everything in foodlist and puts it in the list
-            /*List(foodInList, id: \.id) { food in
-                VStack{
-                    NavigationLink(destination: FoodDetail(food: food).navigationTitle(food.name), label: {
-                        Text(food.name)
-                    })
-                        .padding()
-                }
-            }*/
-            
-            //Add a search bar that takes the user input and sends it to the api
-            
-            VStack(alignment: .leading) {
-                SearchBar(searchFood: $searchFood, searching: $searching, hits: hits)
-                    .navigationTitle(searching ? "Searching Food" : (searchFood.isEmpty ? "Search A Food" : searchFood))
-                    .toolbar{
-                        if searching {
-                            Button("Cancel") {
-                                searchFood = ""
-                                withAnimation{
-                                    searching = false
+        NavigationView {
+            VStack{
+                
+                VStack(alignment: .leading) {
+                    SearchBar(searchFood: $searchFood, searching: $searching, hits: hits)
+                        .navigationTitle(searching ? "Searching Food" : (searchFood.isEmpty ? "Search A Food" : searchFood))
+                        .toolbar{
+                            if searching {
+                                Button("Cancel") {
+                                    searchFood = ""
+                                    withAnimation{
+                                        searching = false
+                                    }
                                 }
                             }
                         }
-                    }
-            }
-            List{
-                if !hits.foodSearchRespnse.isEmpty{
-                    ForEach(hits.foodSearchRespnse, id: \.self){ hit in
-                        let tempFood = Food(name: hit.fields.item_name, servingSize: hit.fields.nf_serving_size_unit, calories: Int(hit.fields.nf_calories), protein: Int(hit.fields.nf_protein), carbs: Int(hit.fields.nf_total_carbohydrate), fat: Int(hit.fields.nf_total_fat))
-                        AddFoodRow(food: tempFood)
-                    }
-                }else if searchFood != "" && !searching{
-                    Text("No Results for \(searchFood)")
                 }
-                
-            }/*.onAppear {
-                print("Did this start?")
-                hits.getResponse()
-                print("ended")
-            }*/
+                List{
+                    if !hits.foodSearchRespnse.isEmpty{
+                        ForEach(hits.foodSearchRespnse, id: \.self){ hit in
+                            let tempFood = Food(name: hit.fields.item_name, servingSize: hit.fields.nf_serving_size_unit, calories: Int(hit.fields.nf_calories), protein: Int(hit.fields.nf_protein), carbs: Int(hit.fields.nf_total_carbohydrate), fat: Int(hit.fields.nf_total_fat))
+                            AddFoodRow(food: tempFood)
+                        }
+                    }else if searchFood != "" && !searching{
+                        Text("No Results for \(searchFood)")
+                    }
+                    
+                }
+            }
         }
     }
 }
