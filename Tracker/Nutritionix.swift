@@ -86,6 +86,7 @@ class FoodResponse: ObservableObject{
                 } catch let error{
                     //this gets executed when the url is created but nothing matches the url
                     print("Error Decoding: ", error)
+                    self?.foodSearchRespnse = []
                 }
                 
             }
