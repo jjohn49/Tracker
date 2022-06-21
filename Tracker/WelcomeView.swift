@@ -26,27 +26,50 @@ struct WelcomeView: View {
     
     @StateObject var foodEnvVar = FoodEnvVar()
     
+    
     var body: some View {
         TabView{
-                NutritionView(caloriesAllowed: foodEnvVar.totalCaloriesAllowedInADat, caloriesConsumed: foodEnvVar.totalCaloriesConsumedInADay, proteinConsumed: foodEnvVar.totalProteinConsumedInADay, carbsConsumed: foodEnvVar.totalCarbsConsumedInADay, fatsConsumed: foodEnvVar.totalFatConsumedInADay)
+            GoalsView()
                 .tabItem{
-                    Label("Goals", systemImage: "leaf.circle")
+                    Label("Goals", systemImage: "flame.circle")
                 }
-                foodCosumedView()
+            NutritionView(caloriesAllowed: foodEnvVar.totalCaloriesAllowedInADat, caloriesConsumed: foodEnvVar.totalCaloriesConsumedInADay, proteinConsumed: foodEnvVar.totalProteinConsumedInADay, carbsConsumed: foodEnvVar.totalCarbsConsumedInADay, fatsConsumed: foodEnvVar.totalFatConsumedInADay)
+                .tabItem{
+                    Label("Macros", systemImage: "leaf.circle")
+                }
+            foodCosumedView()
                 .tabItem{
                     Label("Food Consumed", systemImage: "pills.circle")
                 }
-                AddFoodView()
+            AddFoodView()
                 .tabItem{
                     Label("Add Food", systemImage: "cross.circle")
                 }
-            
-        }
-        //put the variable foodListConsumed which is part of the custom class so that
-        //all views within the navigation view have access to the variable
-        .environmentObject(foodEnvVar)
+            //put the variable foodListConsumed which is part of the custom class so that
+            //all views within the navigation view have access to the variable
+        }.environmentObject(foodEnvVar)
     }
 
+}
+
+struct GoalsView: View{
+    @EnvironmentObject var foodEnvVar: FoodEnvVar
+    
+    var body: some View{
+        NavigationView{
+            VStack{
+                HStack{
+                    Text("Calorie Goal: ").padding()
+                    TextField(String(foodEnvVar.totalCaloriesAllowedInADat), value: $foodEnvVar.totalCaloriesAllowedInADat, formatter: NumberFormatter())
+                        .padding()
+                        /*.onSubmit {
+                            print(String(foodEnvVar.totalCaloriesAllowedInADat))
+                        }*/
+                }
+            }
+            .navigationTitle("Goals")
+        }
+    }
 }
 
 struct foodCosumedView: View{
@@ -55,22 +78,27 @@ struct foodCosumedView: View{
     
     
     var body: some View{
-        
-        List {
-            ForEach(foodEnvVar.foodCosumedListVar) { food in
-                FoodConsumedRow(food: food)
+        NavigationView{
+            if !foodEnvVar.foodCosumedListVar.isEmpty{
+                List {
+                    ForEach(foodEnvVar.foodCosumedListVar) { food in
+                        FoodConsumedRow(food: food)
+                    }
+                    .onDelete { indexSet in
+                        let index = indexSet[indexSet.startIndex]
+                        let foodToDelete: Food = foodEnvVar.foodCosumedListVar[index]
+                        foodEnvVar.foodCosumedListVar.remove(atOffsets: indexSet)
+                        foodEnvVar.totalCaloriesConsumedInADay -= foodToDelete.calories * foodToDelete.numOfServ
+                        foodEnvVar.totalProteinConsumedInADay -= foodToDelete.protein * foodToDelete.numOfServ
+                        foodEnvVar.totalCarbsConsumedInADay -= foodToDelete.carbs * foodToDelete.numOfServ
+                        foodEnvVar.totalFatConsumedInADay -= foodToDelete.fat * foodToDelete.numOfServ
+                    }
+                    .navigationTitle("Food Consumed")
+                }
+            } else {
+                Text("You Haven't Eaten Today")
+                    .navigationTitle("No Food")
             }
-            .onDelete { indexSet in
-                let index = indexSet[indexSet.startIndex]
-                let foodToDelete: Food = foodEnvVar.foodCosumedListVar[index]
-                foodEnvVar.foodCosumedListVar.remove(atOffsets: indexSet)
-                foodEnvVar.totalCaloriesConsumedInADay -= foodToDelete.calories * foodToDelete.numOfServ
-                foodEnvVar.totalProteinConsumedInADay -= foodToDelete.protein * foodToDelete.numOfServ
-                foodEnvVar.totalCarbsConsumedInADay -= foodToDelete.carbs * foodToDelete.numOfServ
-                foodEnvVar.totalFatConsumedInADay -= foodToDelete.fat * foodToDelete.numOfServ
-            }
-            
-                
         }
     }
 }
@@ -93,27 +121,32 @@ struct NutritionView: View {
     
     var body: some View {
         var caloriesLeft = caloriesAllowed - caloriesConsumed
-        VStack{
-            Text("Calories Left: " + String(caloriesAllowed - caloriesConsumed))
-            ProgressView(value: getPercentage())
-                .padding()
+        NavigationView {
             VStack{
-                Text("Protein: " + String(proteinConsumed) + "g")
-                ProgressView(value: 0.5)
-                
-                Text("Carbs: " + String(carbsConsumed) + "g")
-                ProgressView(value: 0.5)
-                
-                Text("Fat: " + String(fatsConsumed) + "g")
-                ProgressView(value: 0.5)
+                Text("Calories Left: " + String(caloriesAllowed - caloriesConsumed))
+                ProgressView(value: getPercentage())
+                    .padding()
+                VStack{
+                    Text("Protein: " + String(proteinConsumed) + "g")
+                    ProgressView(value: 0.5)
+                    
+                    Text("Carbs: " + String(carbsConsumed) + "g")
+                    ProgressView(value: 0.5)
+                    
+                    Text("Fat: " + String(fatsConsumed) + "g")
+                    ProgressView(value: 0.5)
+                }
+                .padding()
+                //add better styling
+                .border(.black)
             }
             .padding()
-            //add better styling
-            .border(.black)
+            .navigationTitle("Macros")
         }
-        .padding()
     }
 }
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

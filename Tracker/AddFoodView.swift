@@ -22,19 +22,17 @@ struct AddFoodView: View {
     var body: some View {
         NavigationView {
             VStack{
-                
                 VStack(alignment: .leading) {
                     SearchBar(searchFood: $searchFood, searching: $searching, hits: hits)
                         .navigationTitle(searching ? "Searching Food" : (searchFood.isEmpty ? "Search A Food" : searchFood))
                         .toolbar{
-                            if searching {
-                                Button("Cancel") {
-                                    searchFood = ""
-                                    withAnimation{
-                                        searching = false
-                                    }
-                                }
-                            }
+                            ToolbarItem(placement: .navigationBarTrailing, content: {
+                                NavigationLink(destination: {
+                                    CreateCustomFood()
+                                }, label: {
+                                    Text("Create Food")
+                                })
+                            })
                         }
                 }
                 List{
@@ -46,7 +44,6 @@ struct AddFoodView: View {
                     }else if searchFood != "" && !searching{
                         Text("No Results for \(searchFood)")
                     }
-                    
                 }
             }
         }
@@ -83,6 +80,17 @@ struct SearchBar: View {
                     }
                     hits.getResponse(food: searchFood)
                 }
+                Button(action: {
+                    if searchFood != ""{
+                        searchFood = ""
+                        withAnimation{
+                            searching = false
+                        }
+                    }
+                }, label: {
+                    Image(systemName: "delete.left")
+                        .foregroundColor(.gray)
+                }).padding()
             }
             .foregroundColor(.gray)
             .padding(.leading, 13)
