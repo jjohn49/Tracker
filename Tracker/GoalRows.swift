@@ -12,15 +12,11 @@ struct CalorieGoalRow: View {
     
     var body: some View {
         HStack{
-            Text("Calorie Goal: ").padding(20).font(.headline)
-            TextField(String(foodEnvVar.totalCaloriesAllowedInADat), value: $foodEnvVar.totalCaloriesAllowedInADat, formatter: NumberFormatter()).padding(10).background(.gray).cornerRadius(20).onSubmit {
-                if (foodEnvVar.totalCaloriesAllowedInADat ) % 8 == 0{
-                    
-                }
-            }
-            Text("gs").font(.footnote)
-            Stepper("", value: $foodEnvVar.totalCaloriesAllowedInADat).padding()
-        }.background(.orange).cornerRadius(10).padding(5)
+            Text("Calorie Goal:").padding(20).font(.headline)
+            Text("\(foodEnvVar.totalCaloriesAllowedInADat)").padding(20)
+            Text("gs").padding()
+            Text("Per Day").padding()
+        }.background(.orange).cornerRadius(10).padding(1)
     }
 }
 

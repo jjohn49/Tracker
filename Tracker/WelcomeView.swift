@@ -34,6 +34,10 @@ class FoodEnvVar: ObservableObject{
             totalCaloriesAllowedInADat = 4 * (proteinGoal + carbGoal) + ( 8 * fatGoal)
         }
     }
+    
+    func diffOfTotalCalAndMacros()->Int{
+        return totalCaloriesAllowedInADat - 4 * (proteinGoal + carbGoal) + ( 8 * fatGoal)
+    }
 }
 
 struct WelcomeView: View {
