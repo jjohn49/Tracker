@@ -17,6 +17,8 @@ struct CalorieGoalRow: View {
             Text("gs").padding()
             Text("Per Day").padding()
         }.background(.orange).cornerRadius(10).padding(1)
+        
+        //maybe add like a pie chart or something to get a breakdown of what percentage each macronutrient takes up in the calorie breakdown
     }
 }
 
