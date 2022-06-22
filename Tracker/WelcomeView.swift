@@ -15,8 +15,13 @@ class FoodEnvVar: ObservableObject{
     @Published var totalCaloriesAllowedInADat: Int = 2000
     @Published var totalCaloriesConsumedInADay: Int = 0
     
+    @Published var proteinGoal: Int = 160
     @Published var totalProteinConsumedInADay: Int = 0
+    
+    @Published var carbGoal: Int = 200
     @Published var totalCarbsConsumedInADay: Int = 0
+    
+    @Published var fatGoal: Int = 100
     @Published var totalFatConsumedInADay: Int = 0
     
     
@@ -58,14 +63,10 @@ struct GoalsView: View{
     var body: some View{
         NavigationView{
             VStack{
-                HStack{
-                    Text("Calorie Goal: ").padding()
-                    TextField(String(foodEnvVar.totalCaloriesAllowedInADat), value: $foodEnvVar.totalCaloriesAllowedInADat, formatter: NumberFormatter())
-                        .padding()
-                        /*.onSubmit {
-                            print(String(foodEnvVar.totalCaloriesAllowedInADat))
-                        }*/
-                }
+                CalorieGoalRow()
+                ProteinGoalRow()
+                CarbGoalRow()
+                FatGoalRow()
             }
             .navigationTitle("Goals")
         }
@@ -151,8 +152,10 @@ struct NutritionView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            WelcomeView()        }
+            WelcomeView()
+            .previewInterfaceOrientation(.portrait)        }
     }
 }
+
 
 

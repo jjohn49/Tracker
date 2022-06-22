@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1E1B72AC28577F9100CE4CBB /* CreateCustomFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1B72AB28577F9100CE4CBB /* CreateCustomFood.swift */; };
 		1E3D2F1E2852A15600E4BC3C /* FoodDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D2F1D2852A15600E4BC3C /* FoodDetail.swift */; };
+		1E70C4022863984C00B8B0D3 /* GoalRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E70C4012863984C00B8B0D3 /* GoalRows.swift */; };
 		1E89F149284FD56D00655DB1 /* TrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89F148284FD56D00655DB1 /* TrackerApp.swift */; };
 		1E89F14B284FD56D00655DB1 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89F14A284FD56D00655DB1 /* WelcomeView.swift */; };
 		1E89F14D284FD56E00655DB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E89F14C284FD56E00655DB1 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		1E1B72AB28577F9100CE4CBB /* CreateCustomFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomFood.swift; sourceTree = "<group>"; };
 		1E3D2F1D2852A15600E4BC3C /* FoodDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetail.swift; sourceTree = "<group>"; };
+		1E70C4012863984C00B8B0D3 /* GoalRows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalRows.swift; sourceTree = "<group>"; };
 		1E89F145284FD56D00655DB1 /* Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E89F148284FD56D00655DB1 /* TrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerApp.swift; sourceTree = "<group>"; };
 		1E89F14A284FD56D00655DB1 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -116,9 +118,10 @@
 				1EB6D1F62857F7B000893FF8 /* FoodConsumedRow.swift */,
 				1E89F172284FDD1300655DB1 /* Food.swift */,
 				1EB6D1FF2858233300893FF8 /* Nutritionix.swift */,
+				1EA822F028610186006D3360 /* AddFoodRow.swift */,
+				1E70C4012863984C00B8B0D3 /* GoalRows.swift */,
 				1E89F14C284FD56E00655DB1 /* Assets.xcassets */,
 				1E89F14E284FD56E00655DB1 /* Preview Content */,
-				1EA822F028610186006D3360 /* AddFoodRow.swift */,
 			);
 			path = Tracker;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				1EB6D2002858233300893FF8 /* Nutritionix.swift in Sources */,
 				1E89F14B284FD56D00655DB1 /* WelcomeView.swift in Sources */,
 				1E1B72AC28577F9100CE4CBB /* CreateCustomFood.swift in Sources */,
+				1E70C4022863984C00B8B0D3 /* GoalRows.swift in Sources */,
 				1E3D2F1E2852A15600E4BC3C /* FoodDetail.swift in Sources */,
 				1E89F149284FD56D00655DB1 /* TrackerApp.swift in Sources */,
 				1EB6D1F72857F7B000893FF8 /* FoodConsumedRow.swift in Sources */,
