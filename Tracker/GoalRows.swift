@@ -13,10 +13,14 @@ struct CalorieGoalRow: View {
     var body: some View {
         HStack{
             Text("Calorie Goal: ").padding(20).font(.headline)
-            TextField(String(foodEnvVar.totalCaloriesAllowedInADat), value: $foodEnvVar.totalCaloriesAllowedInADat, formatter: NumberFormatter()).padding(10).background(.gray).cornerRadius(20)
+            TextField(String(foodEnvVar.totalCaloriesAllowedInADat), value: $foodEnvVar.totalCaloriesAllowedInADat, formatter: NumberFormatter()).padding(10).background(.gray).cornerRadius(20).onSubmit {
+                if (foodEnvVar.totalCaloriesAllowedInADat ) % 8 == 0{
+                    
+                }
+            }
+            Text("gs").font(.footnote)
             Stepper("", value: $foodEnvVar.totalCaloriesAllowedInADat).padding()
         }.background(.orange).cornerRadius(10).padding(5)
-        
     }
 }
 
@@ -27,18 +31,17 @@ struct ProteinGoalRow: View {
         HStack{
             Text("Protein Goal: ").padding(20).font(.headline)
             TextField(String(foodEnvVar.proteinGoal), value: $foodEnvVar.proteinGoal, formatter: NumberFormatter()).padding(10).background(.gray).cornerRadius(20).onSubmit {
-                if (foodEnvVar.proteinGoal + foodEnvVar.carbGoal + foodEnvVar.fatGoal) * 4 != foodEnvVar.totalCaloriesAllowedInADat{
-                    foodEnvVar.totalCaloriesAllowedInADat = 4 * (foodEnvVar.proteinGoal + foodEnvVar.carbGoal + foodEnvVar.fatGoal)
-                }
+                foodEnvVar.calcTotalCalsAllowed()
             }
+            Text("gs").font(.footnote)
             Stepper {
                 Text("")
             } onIncrement: {
                 foodEnvVar.proteinGoal+=1
-                foodEnvVar.totalCaloriesAllowedInADat += 4
+                foodEnvVar.calcTotalCalsAllowed()
             } onDecrement: {
                 foodEnvVar.proteinGoal-=1
-                foodEnvVar.totalCaloriesAllowedInADat -= 4
+                foodEnvVar.calcTotalCalsAllowed()
             }.padding()
 
         }.background(.tint).cornerRadius(10).padding(5)
@@ -52,18 +55,17 @@ struct CarbGoalRow: View {
         HStack{
             Text("Carb Goal: ").padding(20).font(.headline)
             TextField(String(foodEnvVar.carbGoal), value: $foodEnvVar.carbGoal, formatter: NumberFormatter()).padding(10).background(.gray).cornerRadius(20).onSubmit {
-                if (foodEnvVar.proteinGoal + foodEnvVar.carbGoal + foodEnvVar.fatGoal) * 4 != foodEnvVar.totalCaloriesAllowedInADat{
-                    foodEnvVar.totalCaloriesAllowedInADat = 4 * (foodEnvVar.proteinGoal + foodEnvVar.carbGoal + foodEnvVar.fatGoal)
-                }
+                foodEnvVar.calcTotalCalsAllowed()
             }
+            Text("gs").font(.footnote)
             Stepper {
                 Text("")
             } onIncrement: {
                 foodEnvVar.carbGoal+=1
-                foodEnvVar.totalCaloriesAllowedInADat += 4
+                foodEnvVar.calcTotalCalsAllowed()
             } onDecrement: {
                 foodEnvVar.carbGoal-=1
-                foodEnvVar.totalCaloriesAllowedInADat -= 4
+                foodEnvVar.calcTotalCalsAllowed()
             }.padding()
 
         }.background(.tertiary).cornerRadius(10).padding(5)
@@ -77,18 +79,17 @@ struct FatGoalRow: View {
         HStack{
             Text("Fat Goal: ").padding(21).font(.headline)
             TextField(String(foodEnvVar.fatGoal), value: $foodEnvVar.fatGoal, formatter: NumberFormatter()).padding(10).background(.gray).cornerRadius(20).onSubmit {
-                if (foodEnvVar.proteinGoal + foodEnvVar.carbGoal + foodEnvVar.fatGoal) * 4 != foodEnvVar.totalCaloriesAllowedInADat{
-                    foodEnvVar.totalCaloriesAllowedInADat = 4 * (foodEnvVar.proteinGoal + foodEnvVar.carbGoal + foodEnvVar.fatGoal)
-                }
+                foodEnvVar.calcTotalCalsAllowed()
             }
+            Text("gs").font(.footnote)
             Stepper {
                 Text("")
             } onIncrement: {
                 foodEnvVar.fatGoal+=1
-                foodEnvVar.totalCaloriesAllowedInADat += 8
+                foodEnvVar.calcTotalCalsAllowed()
             } onDecrement: {
                 foodEnvVar.fatGoal-=1
-                foodEnvVar.totalCaloriesAllowedInADat -= 8
+                foodEnvVar.calcTotalCalsAllowed()
             }.padding()
 
         }.background(.indigo).cornerRadius(10).padding(5)

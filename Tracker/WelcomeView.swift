@@ -12,7 +12,7 @@ import SwiftUI
 class FoodEnvVar: ObservableObject{
     @Published var foodCosumedListVar: [Food] = []
     
-    @Published var totalCaloriesAllowedInADat: Int = 2000
+    
     @Published var totalCaloriesConsumedInADay: Int = 0
     
     @Published var proteinGoal: Int = 160
@@ -24,7 +24,16 @@ class FoodEnvVar: ObservableObject{
     @Published var fatGoal: Int = 100
     @Published var totalFatConsumedInADay: Int = 0
     
+    @Published var totalCaloriesAllowedInADat: Int = (160 + 200) * 4 + (100 * 8)
     
+    
+    //this method essentially does the calculations of how many calories are consumed from meeting all your macro goals
+    //Makes less code in the GoalRows.swift file
+    func calcTotalCalsAllowed(){
+        if (proteinGoal + carbGoal) * 4 + (fatGoal * 8) != totalCaloriesAllowedInADat{
+            totalCaloriesAllowedInADat = 4 * (proteinGoal + carbGoal) + ( 8 * fatGoal)
+        }
+    }
 }
 
 struct WelcomeView: View {
