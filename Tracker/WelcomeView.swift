@@ -10,21 +10,23 @@ import SwiftUI
 //creates the enviorment variable that can be shared throughout views
 // all enviorment variables have to conform to the OBServableObject class
 class FoodEnvVar: ObservableObject{
-    @Published var foodCosumedListVar: [Food] = []
     
+    @Published var setPreferences: Bool = false
+    
+    @Published var foodCosumedListVar: [Food] = []
     
     @Published var totalCaloriesConsumedInADay: Int = 0
     
-    @Published var proteinGoal: Int = 160
+    @Published var proteinGoal: Int = 0
     @Published var totalProteinConsumedInADay: Int = 0
     
-    @Published var carbGoal: Int = 200
+    @Published var carbGoal: Int = 0
     @Published var totalCarbsConsumedInADay: Int = 0
     
-    @Published var fatGoal: Int = 100
+    @Published var fatGoal: Int = 0
     @Published var totalFatConsumedInADay: Int = 0
     
-    @Published var totalCaloriesAllowedInADat: Int = (160 + 200) * 4 + (100 * 8)
+    @Published var totalCaloriesAllowedInADat: Int = 0
     
     
     //this method essentially does the calculations of how many calories are consumed from meeting all your macro goals
@@ -47,22 +49,30 @@ struct WelcomeView: View {
     
     var body: some View {
         TabView{
-            GoalsView()
-                .tabItem{
-                    Label("Goals", systemImage: "flame.circle")
-                }
-            NutritionView(caloriesAllowed: foodEnvVar.totalCaloriesAllowedInADat, caloriesConsumed: foodEnvVar.totalCaloriesConsumedInADay, proteinConsumed: foodEnvVar.totalProteinConsumedInADay, carbsConsumed: foodEnvVar.totalCarbsConsumedInADay, fatsConsumed: foodEnvVar.totalFatConsumedInADay)
-                .tabItem{
-                    Label("Macros", systemImage: "leaf.circle")
-                }
-            foodCosumedView()
-                .tabItem{
-                    Label("Food Consumed", systemImage: "pills.circle")
-                }
-            AddFoodView()
-                .tabItem{
-                    Label("Add Food", systemImage: "cross.circle")
-                }
+            if !foodEnvVar.setPreferences {
+                SetPreferences()
+                //create a setPreferencesView
+                //print("Set preferences is false")
+                //foodEnvVar.setPreferences.toggle()
+            }else{
+                GoalsView()
+                    .tabItem{
+                        Label("Goals", systemImage: "flame.circle")
+                    }
+                NutritionView(caloriesAllowed: foodEnvVar.totalCaloriesAllowedInADat, caloriesConsumed: foodEnvVar.totalCaloriesConsumedInADay, proteinConsumed: foodEnvVar.totalProteinConsumedInADay, carbsConsumed: foodEnvVar.totalCarbsConsumedInADay, fatsConsumed: foodEnvVar.totalFatConsumedInADay)
+                    .tabItem{
+                        Label("Macros", systemImage: "leaf.circle")
+                    }
+                foodCosumedView()
+                    .tabItem{
+                        Label("Food Consumed", systemImage: "pills.circle")
+                    }
+                AddFoodView()
+                    .tabItem{
+                        Label("Add Food", systemImage: "cross.circle")
+                    }
+            }
+            
             //put the variable foodListConsumed which is part of the custom class so that
             //all views within the navigation view have access to the variable
         }.environmentObject(foodEnvVar)
