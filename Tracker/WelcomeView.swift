@@ -92,6 +92,15 @@ struct GoalsView: View{
                 FatGoalRow()
             }
             .navigationTitle("Goals")
+            .toolbar{
+                ToolbarItem(content: {
+                    Button(action: {
+                        foodEnvVar.setPreferences.toggle()
+                    }, label: {
+                        Label("Set Goals", systemImage: "brain")
+                    })
+                })
+            }
         }
     }
 }

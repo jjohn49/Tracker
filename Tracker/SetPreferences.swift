@@ -44,7 +44,7 @@ struct MacroPreferences: View{
                     setPref()
                     foodEnvVar.setPreferences = true
                 }, label: {
-                    Text("Set Preferences").padding(EdgeInsets(top: 5, leading: 50, bottom: 5, trailing: 50))
+                    Text("Set Goals").padding(EdgeInsets(top: 5, leading: 50, bottom: 5, trailing: 50))
                 }).padding().background(.tint).foregroundColor(.white).cornerRadius(10)
                 
                 .navigationTitle("Set Preferences")
