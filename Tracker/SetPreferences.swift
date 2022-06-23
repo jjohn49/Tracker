@@ -10,6 +10,14 @@ import SwiftUI
 
 
 struct SetPreferences: View {
+    var body: some View{
+        VStack{
+            MacroPreferences()
+        }
+    }
+}
+
+struct MacroPreferences: View{
     @EnvironmentObject var foodEnvVar: FoodEnvVar
     
     var body: some View {
@@ -36,8 +44,8 @@ struct SetPreferences: View {
                     setPref()
                     foodEnvVar.setPreferences = true
                 }, label: {
-                    Text("Set Preferences")
-                })
+                    Text("Set Preferences").padding(EdgeInsets(top: 5, leading: 50, bottom: 5, trailing: 50))
+                }).padding().background(.tint).foregroundColor(.white).cornerRadius(10)
                 
                 .navigationTitle("Set Preferences")
             }
