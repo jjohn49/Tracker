@@ -10,9 +10,22 @@ import SwiftUI
 
 
 struct SetPreferences: View {
+    @EnvironmentObject var foodEnvVar: FoodEnvVar
     var body: some View{
-        VStack{
-            MacroPreferences()
+        NavigationView {
+            VStack{
+                //maybe add a new view for weight and height
+                MacroPreferences()
+                    .navigationTitle("Set Goals")
+                
+                Button(action: {
+                    foodEnvVar.setPreferences = true
+                }, label: {
+                    Text("Set Goals").padding(EdgeInsets(top: 5, leading: 50, bottom: 5, trailing: 50))
+                }).padding().background(.tint).foregroundColor(.white).cornerRadius(10)
+                
+                
+            }
         }
     }
 }
@@ -21,35 +34,34 @@ struct MacroPreferences: View{
     @EnvironmentObject var foodEnvVar: FoodEnvVar
     
     var body: some View {
-        NavigationView {
-            VStack{
-                Text("Cals Per Day: \(foodEnvVar.totalCaloriesAllowedInADat)").font(.title).padding()
-                
+        VStack{
+            //Text("The Date is: \(foodEnvVar.dateToStr())")
+            Text("Cals Per Day: \(foodEnvVar.totalCaloriesAllowedInADat)").font(.title).padding()
+            
+            HStack {
+                Text("Protein Goal").padding().font(.title3)
                 TextField("Protein Goal: ", value: $foodEnvVar.proteinGoal, formatter: NumberFormatter()).onSubmit {
                     foodEnvVar.totalCaloriesAllowedInADat += foodEnvVar.proteinGoal * 4
                     setPref()
                 }.padding()
-                
+            }
+            
+            HStack {
+                Text("Carb Goal").padding().font(.title3)
                 TextField("Carb Goal: ", value: $foodEnvVar.carbGoal, formatter: NumberFormatter()).onSubmit {
                     foodEnvVar.totalCaloriesAllowedInADat += foodEnvVar.carbGoal * 4
-                     setPref()
+                    setPref()
                 }.padding()
-                
+            }
+            
+            HStack {
+                Text("Fat Goal").padding().font(.title3)
                 TextField("Fat Goal: ", value: $foodEnvVar.fatGoal, formatter: NumberFormatter()).onSubmit {
                     foodEnvVar.totalCaloriesAllowedInADat += foodEnvVar.fatGoal * 8
                     setPref()
                 }.padding()
-                
-                Button(action: {
-                    setPref()
-                    foodEnvVar.setPreferences = true
-                }, label: {
-                    Text("Set Goals").padding(EdgeInsets(top: 5, leading: 50, bottom: 5, trailing: 50))
-                }).padding().background(.tint).foregroundColor(.white).cornerRadius(10)
-                
-                .navigationTitle("Set Preferences")
             }
-        }
+        }.padding()
     }
     
     func setPref() {

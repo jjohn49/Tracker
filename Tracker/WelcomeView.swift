@@ -11,11 +11,10 @@ import SwiftUI
 // all enviorment variables have to conform to the OBServableObject class
 class FoodEnvVar: ObservableObject{
     
+    @Published var date = Date()
     @Published var setPreferences: Bool = false
     
     @Published var foodCosumedListVar: [Food] = []
-    
-    @Published var totalCaloriesConsumedInADay: Int = 0
     
     @Published var proteinGoal: Int = 0
     @Published var totalProteinConsumedInADay: Int = 0
@@ -27,6 +26,7 @@ class FoodEnvVar: ObservableObject{
     @Published var totalFatConsumedInADay: Int = 0
     
     @Published var totalCaloriesAllowedInADat: Int = 0
+    @Published var totalCaloriesConsumedInADay: Int = 0
     
     
     //this method essentially does the calculations of how many calories are consumed from meeting all your macro goals
@@ -37,8 +37,31 @@ class FoodEnvVar: ObservableObject{
         }
     }
     
+    func dateToStr() -> String{
+        let format = DateFormatter()
+        format.dateStyle = .short
+        format.timeStyle = .short
+        
+        return format.string(from: date)
+    }
+    
     func diffOfTotalCalAndMacros()->Int{
         return totalCaloriesAllowedInADat - 4 * (proteinGoal + carbGoal) + ( 8 * fatGoal)
+    }
+    
+    func isItANewDay(){
+        if !Calendar.current.isDateInToday(date){
+            newDay()
+        }
+    }
+    
+    func newDay(){
+        //send all of the data to the database when that is set up
+        date = Date()
+        totalCaloriesConsumedInADay = 0
+        totalProteinConsumedInADay = 0
+        totalCarbsConsumedInADay = 0
+        totalFatConsumedInADay = 0
     }
 }
 
@@ -75,7 +98,7 @@ struct WelcomeView: View {
             
             //put the variable foodListConsumed which is part of the custom class so that
             //all views within the navigation view have access to the variable
-        }.environmentObject(foodEnvVar)
+        }.environmentObject(foodEnvVar).onAppear(perform: foodEnvVar.isItANewDay)
     }
 
 }
@@ -153,7 +176,7 @@ struct NutritionView: View {
     }
     
     var body: some View {
-        var caloriesLeft = caloriesAllowed - caloriesConsumed
+        let caloriesLeft = caloriesAllowed - caloriesConsumed
         NavigationView {
             VStack{
                 Text("Calories Left: " + String(caloriesAllowed - caloriesConsumed))
