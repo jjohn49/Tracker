@@ -63,6 +63,12 @@ class FoodEnvVar: ObservableObject{
         totalCarbsConsumedInADay = 0
         totalFatConsumedInADay = 0
     }
+    
+    /*func saveToUserDefaults(){
+        let defaults = UserDefaults.standard
+        
+        
+    }*/
 }
 
 struct WelcomeView: View {
