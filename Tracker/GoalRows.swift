@@ -103,14 +103,6 @@ struct FatGoalRow: View {
 
 struct GoalRows_Previews: PreviewProvider {
     static var previews: some View {
-        VStack{
-            CalorieGoalRow()
-            
-            ProteinGoalRow()
-            
-            CarbGoalRow()
-            
-            FatGoalRow()
-        }.environmentObject(FoodEnvVar())
+        GoalsView().environmentObject(FoodEnvVar())
     }
 }

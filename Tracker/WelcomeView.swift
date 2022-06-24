@@ -40,10 +40,10 @@ struct WelcomeView: View {
                         Label("Add Food", systemImage: "cross.circle")
                     }
             }
-            
             //put the variable foodListConsumed which is part of the custom class so that
             //all views within the navigation view have access to the variable
-        }.environmentObject(foodEnvVar).onAppear{
+        }.environmentObject(foodEnvVar)
+            .onAppear{
             foodEnvVar.fetchFromDefaults()
             foodEnvVar.isItANewDay()
         }
