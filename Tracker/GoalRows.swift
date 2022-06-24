@@ -37,9 +37,11 @@ struct ProteinGoalRow: View {
             } onIncrement: {
                 foodEnvVar.proteinGoal+=1
                 foodEnvVar.calcTotalCalsAllowed()
+                foodEnvVar.saveToDefaults()
             } onDecrement: {
                 foodEnvVar.proteinGoal-=1
                 foodEnvVar.calcTotalCalsAllowed()
+                foodEnvVar.saveToDefaults()
             }.padding()
 
         }.background(.tint).cornerRadius(10).padding(5)
@@ -61,9 +63,11 @@ struct CarbGoalRow: View {
             } onIncrement: {
                 foodEnvVar.carbGoal+=1
                 foodEnvVar.calcTotalCalsAllowed()
+                foodEnvVar.saveToDefaults()
             } onDecrement: {
                 foodEnvVar.carbGoal-=1
                 foodEnvVar.calcTotalCalsAllowed()
+                foodEnvVar.saveToDefaults()
             }.padding()
 
         }.background(.tertiary).cornerRadius(10).padding(5)
@@ -85,9 +89,11 @@ struct FatGoalRow: View {
             } onIncrement: {
                 foodEnvVar.fatGoal+=1
                 foodEnvVar.calcTotalCalsAllowed()
+                foodEnvVar.saveToDefaults()
             } onDecrement: {
                 foodEnvVar.fatGoal-=1
                 foodEnvVar.calcTotalCalsAllowed()
+                foodEnvVar.saveToDefaults()
             }.padding()
 
         }.background(.indigo).cornerRadius(10).padding(5)

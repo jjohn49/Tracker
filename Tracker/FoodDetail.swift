@@ -25,20 +25,11 @@ struct FoodDetail: View {
             Text("Carbs: " + String(food.carbs * food.numOfServ))
             Text("Fat: " + String(food.fat * food.numOfServ))
             Button(action: {
-                updateFoodEnvVars(food: food)
+                foodEnvVar.updateFoodEnvVars(food: food)
             }, label: {
                 Text("Add " + food.name + " To The Food Consumed List")
             })
         }
-    }
-    
-    func updateFoodEnvVars(food:Food){
-        foodEnvVar.foodCosumedListVar.append(food)
-        foodEnvVar.totalCaloriesConsumedInADay += food.calories * food.numOfServ
-        foodEnvVar.totalProteinConsumedInADay += food.protein * food.numOfServ
-        foodEnvVar.totalCarbsConsumedInADay += food.carbs * food.numOfServ
-        foodEnvVar.totalFatConsumedInADay += food.fat * food.numOfServ
-        foodEnvVar.saveToDefaults()
     }
 }
 

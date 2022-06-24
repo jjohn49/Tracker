@@ -23,7 +23,7 @@ struct CreateCustomFood: View {
         VStack{
             inputFoodDetails(foodName: $foodName, foodServingSize: $foodServingSize, foodAmount: $foodAmount, foodCals: $foodCals, foodPro: $foodPro, foodCarbs: $foodCarbs, foodFat: $foodFat)
             Button (action: {
-                updateFoodEnvVars(food: createFood())
+                foodEnvVar.updateFoodEnvVars(food: createFood())
                 //maybe add soemthing that will send this to the database
             }, label: {
                 Text("Create and Add Custom Food")
@@ -35,13 +35,7 @@ struct CreateCustomFood: View {
         return Food(name: foodName, servingSize: foodServingSize, calories: foodCals, protein: foodPro, carbs: foodCarbs, fat: foodFat)
     }
     
-    func updateFoodEnvVars(food:Food){
-        foodEnvVar.foodCosumedListVar.append(food)
-        foodEnvVar.totalCaloriesConsumedInADay += food.calories * food.numOfServ
-        foodEnvVar.totalProteinConsumedInADay += food.protein * food.numOfServ
-        foodEnvVar.totalCarbsConsumedInADay += food.carbs * food.numOfServ
-        foodEnvVar.totalFatConsumedInADay += food.fat * food.numOfServ
-    }
+    
 }
 
 struct inputFoodDetails: View{
