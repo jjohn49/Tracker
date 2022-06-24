@@ -49,12 +49,14 @@ class FoodEnvVar: ObservableObject{
         return totalCaloriesAllowedInADat - 4 * (proteinGoal + carbGoal) + ( 8 * fatGoal)
     }
     
+    //checks to see if it is a new day and calls the newDay method
     func isItANewDay(){
         if !Calendar.current.isDateInToday(date){
             newDay()
         }
     }
     
+    //makes all the macros consumed today vars = 0 bc its a new day
     func newDay(){
         //send all of the data to the database when that is set up
         date = Date()
@@ -64,11 +66,50 @@ class FoodEnvVar: ObservableObject{
         totalFatConsumedInADay = 0
     }
     
-    /*func saveToUserDefaults(){
+    //saves all the food enviorment variables to user defaults
+    func saveToDefaults() {
         let defaults = UserDefaults.standard
+        defaults.set(setPreferences, forKey: "setPreferences")
         
+        //encodes the custom struct to json to save to user defaults
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(foodCosumedListVar){
+            defaults.set(encoded, forKey: "foodConsumedListVar")
+        }
         
-    }*/
+        defaults.set(proteinGoal, forKey: "proteinGoal")
+        defaults.set(totalProteinConsumedInADay, forKey: "totalProteinConsumedInADay")
+        defaults.set(carbGoal, forKey: "carbGoal")
+        defaults.set(totalCarbsConsumedInADay, forKey: "totalCarbsConsumedInADay")
+        defaults.set(fatGoal, forKey: "fatGoal")
+        defaults.set(totalFatConsumedInADay, forKey: "totalFatConsumedInADay")
+        defaults.set(totalCaloriesAllowedInADat, forKey: "totalCaloriesAllowedInADat")
+        defaults.set(totalCaloriesConsumedInADay, forKey: "totalCaloriesConsumedInADay")
+    }
+
+    //Fetches data fro m UserDefaults so settings are saved persistently
+    func fetchFromDefaults(){
+        let defaults = UserDefaults.standard
+        setPreferences = defaults.bool(forKey: "setPreferences")
+        
+        if let encodedFoodList = defaults.object(forKey: "foodConsumedListVar") as? Data {
+            let decoder = JSONDecoder()
+            if let temp = try? decoder.decode([Food].self, from: encodedFoodList){
+                foodCosumedListVar = temp
+            }
+        }
+        
+        print(foodCosumedListVar)
+        
+        proteinGoal = defaults.integer(forKey: "proteinGoal")
+        totalProteinConsumedInADay = defaults.integer(forKey: "totalProteinConsumedInADay")
+        carbGoal = defaults.integer(forKey: "carbGoal")
+        totalCarbsConsumedInADay = defaults.integer(forKey: "totalCarbsConsumedInADay")
+        fatGoal = defaults.integer(forKey: "fatGoal")
+        totalFatConsumedInADay = defaults.integer(forKey: "totalFatConsumedInADay")
+        totalCaloriesAllowedInADat = defaults.integer(forKey: "totalCaloriesAllowedInADat")
+        totalCaloriesConsumedInADay = defaults.integer(forKey: "totalCaloriesConsumedInADay")
+    }
 }
 
 struct WelcomeView: View {
@@ -104,7 +145,10 @@ struct WelcomeView: View {
             
             //put the variable foodListConsumed which is part of the custom class so that
             //all views within the navigation view have access to the variable
-        }.environmentObject(foodEnvVar).onAppear(perform: foodEnvVar.isItANewDay)
+        }.environmentObject(foodEnvVar).onAppear{
+            foodEnvVar.fetchFromDefaults()
+            foodEnvVar.isItANewDay()
+        }
     }
 
 }

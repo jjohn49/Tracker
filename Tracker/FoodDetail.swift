@@ -38,6 +38,7 @@ struct FoodDetail: View {
         foodEnvVar.totalProteinConsumedInADay += food.protein * food.numOfServ
         foodEnvVar.totalCarbsConsumedInADay += food.carbs * food.numOfServ
         foodEnvVar.totalFatConsumedInADay += food.fat * food.numOfServ
+        foodEnvVar.saveToDefaults()
     }
 }
 
