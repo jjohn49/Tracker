@@ -23,7 +23,7 @@ struct WelcomeView: View {
                 //print("Set preferences is false")
                 //foodEnvVar.setPreferences.toggle()
             }else{
-                NutritionView(caloriesAllowed: foodEnvVar.totalCaloriesAllowedInADat, caloriesConsumed: foodEnvVar.totalCaloriesConsumedInADay, proteinConsumed: foodEnvVar.totalProteinConsumedInADay, carbsConsumed: foodEnvVar.totalCarbsConsumedInADay, fatsConsumed: foodEnvVar.totalFatConsumedInADay)
+                NutritionView()
                     .tabItem{
                         Label("Macros", systemImage: "leaf.circle")
                     }
@@ -110,35 +110,30 @@ struct foodCosumedView: View{
 struct NutritionView: View {
     
     //maybe make these enviorment variables so that they can be changed by multiple views
-    var caloriesAllowed: Int
-    var caloriesConsumed : Int
-    
-    var proteinConsumed: Int
-    var carbsConsumed: Int
-    var fatsConsumed: Int
+    @EnvironmentObject var foodEnvVar: FoodEnvVar
     
     //gets the percetage of hoe many calories you've eaten compared
     //to how much you are alowed to eat in a day
-    func getPercentage()->Float{
-        return Float(caloriesConsumed)/Float(caloriesAllowed)
+    func getPercentage(consumed: Int, allowed: Int)->Float{
+        return Float(consumed)/Float(allowed)
     }
     
     var body: some View {
-        let caloriesLeft = caloriesAllowed - caloriesConsumed
+        let caloriesLeft = foodEnvVar.totalCaloriesAllowedInADat - foodEnvVar.totalCaloriesConsumedInADay
         NavigationView {
             VStack{
-                Text("Calories Left: " + String(caloriesAllowed - caloriesConsumed))
-                ProgressView(value: getPercentage())
+                Text("Calories Left: " + String(caloriesLeft)).padding().font(.title2)
+                ProgressView(value: getPercentage(consumed: foodEnvVar.totalCaloriesConsumedInADay, allowed: foodEnvVar.totalCaloriesAllowedInADat))
                     .padding()
                 VStack{
-                    Text("Protein: " + String(proteinConsumed) + "g")
-                    ProgressView(value: 0.5)
+                    Text("Protein: " + String(foodEnvVar.totalProteinConsumedInADay) + "g")
+                    ProgressView(value: getPercentage(consumed: foodEnvVar.totalProteinConsumedInADay, allowed: foodEnvVar.proteinGoal))
                     
-                    Text("Carbs: " + String(carbsConsumed) + "g")
-                    ProgressView(value: 0.5)
+                    Text("Carbs: " + String(foodEnvVar.totalCarbsConsumedInADay) + "g")
+                    ProgressView(value: getPercentage(consumed: foodEnvVar.totalCarbsConsumedInADay, allowed: foodEnvVar.carbGoal))
                     
-                    Text("Fat: " + String(fatsConsumed) + "g")
-                    ProgressView(value: 0.5)
+                    Text("Fat: " + String(foodEnvVar.totalFatConsumedInADay) + "g")
+                    ProgressView(value: getPercentage(consumed: foodEnvVar.totalFatConsumedInADay, allowed: foodEnvVar.fatGoal))
                 }
                 .padding()
                 //add better styling
