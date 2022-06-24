@@ -96,6 +96,7 @@ struct foodCosumedView: View{
                         foodEnvVar.totalProteinConsumedInADay -= foodToDelete.protein * foodToDelete.numOfServ
                         foodEnvVar.totalCarbsConsumedInADay -= foodToDelete.carbs * foodToDelete.numOfServ
                         foodEnvVar.totalFatConsumedInADay -= foodToDelete.fat * foodToDelete.numOfServ
+                        foodEnvVar.saveToDefaults()
                     }
                     .navigationTitle("Food Consumed")
                 }
@@ -106,6 +107,7 @@ struct foodCosumedView: View{
         }
     }
 }
+
 
 struct NutritionView: View {
     
@@ -122,22 +124,26 @@ struct NutritionView: View {
         let caloriesLeft = foodEnvVar.totalCaloriesAllowedInADat - foodEnvVar.totalCaloriesConsumedInADay
         NavigationView {
             VStack{
-                Text("Calories Left: " + String(caloriesLeft)).padding().font(.title2)
-                ProgressView(value: getPercentage(consumed: foodEnvVar.totalCaloriesConsumedInADay, allowed: foodEnvVar.totalCaloriesAllowedInADat))
-                    .padding()
+                VStack {
+                    Text("Calories Left: " + String(caloriesLeft)).padding().font(.title2)
+                    ProgressView(value: getPercentage(consumed: foodEnvVar.totalCaloriesConsumedInADay, allowed: foodEnvVar.totalCaloriesAllowedInADat))
+                        .padding().progressViewStyle(RoundedRectProgressViewStyle())
+                }.background(.mint).cornerRadius(10)
                 VStack{
                     Text("Protein: " + String(foodEnvVar.totalProteinConsumedInADay) + "g")
                     ProgressView(value: getPercentage(consumed: foodEnvVar.totalProteinConsumedInADay, allowed: foodEnvVar.proteinGoal))
+                        .progressViewStyle(RoundedRectProgressViewStyle())
                     
                     Text("Carbs: " + String(foodEnvVar.totalCarbsConsumedInADay) + "g")
-                    ProgressView(value: getPercentage(consumed: foodEnvVar.totalCarbsConsumedInADay, allowed: foodEnvVar.carbGoal))
+                    ProgressView(value: getPercentage(consumed: foodEnvVar.totalCarbsConsumedInADay, allowed: foodEnvVar.carbGoal)).progressViewStyle(RoundedRectProgressViewStyle())
                     
                     Text("Fat: " + String(foodEnvVar.totalFatConsumedInADay) + "g")
-                    ProgressView(value: getPercentage(consumed: foodEnvVar.totalFatConsumedInADay, allowed: foodEnvVar.fatGoal))
+                    ProgressView(value: getPercentage(consumed: foodEnvVar.totalFatConsumedInADay, allowed: foodEnvVar.fatGoal)).progressViewStyle(RoundedRectProgressViewStyle())
                 }
                 .padding()
+                .background(.tint)
+                .cornerRadius(10)
                 //add better styling
-                .border(.black)
             }
             .padding()
             .navigationTitle("Macros")
