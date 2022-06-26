@@ -12,11 +12,11 @@ struct CreateCustomFood: View {
     @State var foodName: String = ""
     @State var foodBrand: String = ""
     @State var foodServingSize: String = ""
-    @State var foodAmount: Int = 0
-    @State var foodCals: Int = 0
-    @State var foodPro: Int = 0
-    @State var foodCarbs: Int = 0
-    @State var foodFat: Int = 0
+    @State var foodAmount: Float = 0
+    @State var foodCals: Float = 0
+    @State var foodPro: Float = 0
+    @State var foodCarbs: Float = 0
+    @State var foodFat: Float = 0
     
     @EnvironmentObject var foodEnvVar: FoodEnvVar
     
@@ -42,11 +42,11 @@ struct CreateCustomFood: View {
 struct inputFoodDetails: View{
     @Binding var foodName: String
     @Binding  var foodServingSize: String
-    @Binding var foodAmount: Int
-    @Binding  var foodCals: Int
-    @Binding  var foodPro: Int
-    @Binding  var foodCarbs: Int
-    @Binding  var foodFat: Int
+    @Binding var foodAmount: Float
+    @Binding  var foodCals: Float
+    @Binding  var foodPro: Float
+    @Binding  var foodCarbs: Float
+    @Binding  var foodFat: Float
     var body: some View{
        NameServingSizeAndAmount(name: $foodName, servingSize: $foodServingSize, amount: $foodAmount)
         Text("Calories")
@@ -63,7 +63,7 @@ struct inputFoodDetails: View{
 struct NameServingSizeAndAmount: View{
      @Binding var name: String
     @Binding var servingSize: String
-     @Binding var amount: Int
+     @Binding var amount: Float
     
     var body: some View{
         TextField("Food Name", text: $name).padding()

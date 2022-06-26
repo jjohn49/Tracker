@@ -116,8 +116,8 @@ struct NutritionView: View {
     
     //gets the percetage of hoe many calories you've eaten compared
     //to how much you are alowed to eat in a day
-    func getPercentage(consumed: Int, allowed: Int)->Float{
-        return Float(consumed)/Float(allowed)
+    func getPercentage(consumed: Float, allowed: Float)->Float{
+        return consumed/allowed
     }
     
     var body: some View {

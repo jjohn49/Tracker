@@ -37,7 +37,7 @@ struct AddFoodView: View {
                 List{
                     if !hits.foodSearchRespnse.isEmpty{
                         ForEach(hits.foodSearchRespnse, id: \.self){ hit in
-                            let tempFood = Food(name: hit.fields.item_name, brand: hit.fields.brand_name, servingSize: hit.fields.nf_serving_size_unit, calories: Int(hit.fields.nf_calories), protein: Int(hit.fields.nf_protein), carbs: Int(hit.fields.nf_total_carbohydrate), fat: Int(hit.fields.nf_total_fat))
+                            let tempFood = Food(name: hit.fields.item_name, brand: hit.fields.brand_name, servingSize: hit.fields.nf_serving_size_unit, calories: hit.fields.nf_calories, protein: hit.fields.nf_protein, carbs: hit.fields.nf_total_carbohydrate, fat: hit.fields.nf_total_fat)
                             AddFoodRow(food: tempFood)
                         }
                     }else if searchFood != "" && !searching{

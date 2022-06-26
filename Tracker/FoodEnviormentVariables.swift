@@ -14,17 +14,17 @@ class FoodEnvVar: ObservableObject{
     
     @Published var foodCosumedListVar: [Food] = []
     
-    @Published var proteinGoal: Int = 0
-    @Published var totalProteinConsumedInADay: Int = 0
+    @Published var proteinGoal: Float = 0
+    @Published var totalProteinConsumedInADay: Float = 0
     
-    @Published var carbGoal: Int = 0
-    @Published var totalCarbsConsumedInADay: Int = 0
+    @Published var carbGoal: Float = 0
+    @Published var totalCarbsConsumedInADay: Float = 0
     
-    @Published var fatGoal: Int = 0
-    @Published var totalFatConsumedInADay: Int = 0
+    @Published var fatGoal: Float = 0
+    @Published var totalFatConsumedInADay: Float = 0
     
-    @Published var totalCaloriesAllowedInADat: Int = 0
-    @Published var totalCaloriesConsumedInADay: Int = 0
+    @Published var totalCaloriesAllowedInADat: Float = 0
+    @Published var totalCaloriesConsumedInADay: Float = 0
     
     
     //this method essentially does the calculations of how many calories are consumed from meeting all your macro goals
@@ -43,7 +43,7 @@ class FoodEnvVar: ObservableObject{
         return format.string(from: date)
     }
     
-    func diffOfTotalCalAndMacros()->Int{
+    func diffOfTotalCalAndMacros()->Float{
         return totalCaloriesAllowedInADat - 4 * (proteinGoal + carbGoal) + ( 8 * fatGoal)
     }
     
@@ -101,14 +101,14 @@ class FoodEnvVar: ObservableObject{
         
         //print(foodCosumedListVar)
         
-        proteinGoal = defaults.integer(forKey: "proteinGoal")
-        totalProteinConsumedInADay = defaults.integer(forKey: "totalProteinConsumedInADay")
-        carbGoal = defaults.integer(forKey: "carbGoal")
-        totalCarbsConsumedInADay = defaults.integer(forKey: "totalCarbsConsumedInADay")
-        fatGoal = defaults.integer(forKey: "fatGoal")
-        totalFatConsumedInADay = defaults.integer(forKey: "totalFatConsumedInADay")
-        totalCaloriesAllowedInADat = defaults.integer(forKey: "totalCaloriesAllowedInADat")
-        totalCaloriesConsumedInADay = defaults.integer(forKey: "totalCaloriesConsumedInADay")
+        proteinGoal = defaults.float(forKey: "proteinGoal")
+        totalProteinConsumedInADay = defaults.float(forKey: "totalProteinConsumedInADay")
+        carbGoal = defaults.float(forKey: "carbGoal")
+        totalCarbsConsumedInADay = defaults.float(forKey: "totalCarbsConsumedInADay")
+        fatGoal = defaults.float(forKey: "fatGoal")
+        totalFatConsumedInADay = defaults.float(forKey: "totalFatConsumedInADay")
+        totalCaloriesAllowedInADat = defaults.float(forKey: "totalCaloriesAllowedInADat")
+        totalCaloriesConsumedInADay = defaults.float(forKey: "totalCaloriesConsumedInADay")
     }
     
     func updateFoodEnvVars(food:Food){

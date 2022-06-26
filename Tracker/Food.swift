@@ -16,11 +16,11 @@ struct Food: Identifiable, Codable {
     let name: String
     let brand: String
     let servingSize: String
-    var numOfServ: Int = 1
-    let calories: Int
-    let protein: Int
-    let carbs: Int
-    let fat: Int
+    var numOfServ: Float = 1
+    let calories: Float
+    let protein: Float
+    let carbs: Float
+    let fat: Float
     
 }
 

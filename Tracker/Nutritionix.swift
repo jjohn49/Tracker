@@ -27,7 +27,7 @@ struct FoodSearchResponse: Hashable ,Codable{
             let nf_total_fat:Float
             let nf_protein:Float
             let nf_total_carbohydrate: Float
-            let nf_serving_size_qty : Int
+            let nf_serving_size_qty : Float
             let nf_serving_size_unit:String
         }
     }
