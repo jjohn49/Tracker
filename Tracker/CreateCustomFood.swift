@@ -10,6 +10,7 @@ import SwiftUI
 struct CreateCustomFood: View {
     
     @State var foodName: String = ""
+    @State var foodBrand: String = ""
     @State var foodServingSize: String = ""
     @State var foodAmount: Int = 0
     @State var foodCals: Int = 0
@@ -32,7 +33,7 @@ struct CreateCustomFood: View {
         }.padding()
     }
     func createFood() -> Food{
-        return Food(name: foodName, servingSize: foodServingSize, calories: foodCals, protein: foodPro, carbs: foodCarbs, fat: foodFat)
+        return Food(name: foodName, brand: foodBrand, servingSize: foodServingSize, calories: foodCals, protein: foodPro, carbs: foodCarbs, fat: foodFat)
     }
     
     

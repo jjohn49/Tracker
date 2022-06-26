@@ -35,7 +35,7 @@ struct FoodDetail: View {
 
 struct FoodDetail_Previews: PreviewProvider {
     static var previews: some View {
-        FoodDetail(food: FoodList.list[0])
+        FoodDetail(food: Food(name: "", brand: "", servingSize: "", numOfServ: 0, calories: 0, protein: 0, carbs: 0, fat: 0))
     }
 }
 

@@ -47,6 +47,7 @@ class FoodEnvVar: ObservableObject{
         return totalCaloriesAllowedInADat - 4 * (proteinGoal + carbGoal) + ( 8 * fatGoal)
     }
     
+    //NEED TO FIX ----------------------------------------------------------
     //checks to see if it is a new day and calls the newDay method
     func isItANewDay(){
         if !Calendar.current.isDateInToday(date){
@@ -63,6 +64,7 @@ class FoodEnvVar: ObservableObject{
         totalCarbsConsumedInADay = 0
         totalFatConsumedInADay = 0
     }
+    //-------------------------------------------------------------------------
     
     //saves all the food enviorment variables to user defaults
     func saveToDefaults() {

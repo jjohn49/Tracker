@@ -27,6 +27,6 @@ struct FoodConsumedRow: View {
 
 struct FoodConsumedRow_Previews: PreviewProvider {
     static var previews: some View {
-        FoodConsumedRow(food: Food(name: "Burger", servingSize: "1 patty", calories: 500, protein: 30, carbs: 10, fat: 20))
+        FoodConsumedRow(food: Food(name: "Burger", brand: "", servingSize: "1 patty", calories: 500, protein: 30, carbs: 10, fat: 20))
     }
 }

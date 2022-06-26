@@ -17,7 +17,7 @@ struct AddFoodRow: View {
                         .bold()
                         .font(.title)
                         .padding()
-                    Text("Brand: ")
+                    Text("Brand: \(food.brand)")
                     Text("Serving Size: \(food.servingSize)")
                 }
                 
@@ -29,6 +29,6 @@ struct AddFoodRow: View {
 
 struct AddFoodRow_Previews: PreviewProvider {
     static var previews: some View {
-        AddFoodRow(food: Food(name: "Pizza", servingSize: "1 slice", calories: 1, protein: 1, carbs: 1, fat: 1))
+        AddFoodRow(food: Food(name: "Pizza", brand: "" , servingSize: "1 slice", calories: 1, protein: 1, carbs: 1, fat: 1))
     }
 }
