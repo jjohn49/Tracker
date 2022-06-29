@@ -38,6 +38,7 @@ struct FoodDetail: View {
             }.background(.gray).cornerRadius(10)
             Button(action: {
                 foodEnvVar.updateFoodEnvVars(food: food)
+                print("Console is working")
             }, label: {
                 Text("Add " + food.name + " To The Food Consumed List").padding(EdgeInsets(top: 5, leading: 50, bottom: 5, trailing: 50))
             }).background(.tint).foregroundColor(.white).cornerRadius(10).padding()

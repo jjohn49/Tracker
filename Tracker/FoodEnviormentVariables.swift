@@ -43,16 +43,24 @@ class FoodEnvVar: ObservableObject{
         return format.string(from: date)
     }
     
+    func dateToStrShortVersion()-> String{
+        let format = DateFormatter()
+        format.dateStyle = .short
+        
+        return format.string(from: date)
+    }
+    
     func diffOfTotalCalAndMacros()->Float{
         return totalCaloriesAllowedInADat - 4 * (proteinGoal + carbGoal) + ( 8 * fatGoal)
     }
     
     //NEED TO FIX ----------------------------------------------------------
     //checks to see if it is a new day and calls the newDay method
-    func isItANewDay(){
+    func isItANewDay() -> Bool{
         if !Calendar.current.isDateInToday(date){
             newDay()
         }
+        return !Calendar.current.isDateInToday(date)
     }
     
     //makes all the macros consumed today vars = 0 bc its a new day
@@ -85,6 +93,8 @@ class FoodEnvVar: ObservableObject{
         defaults.set(totalFatConsumedInADay, forKey: "totalFatConsumedInADay")
         defaults.set(totalCaloriesAllowedInADat, forKey: "totalCaloriesAllowedInADat")
         defaults.set(totalCaloriesConsumedInADay, forKey: "totalCaloriesConsumedInADay")
+        
+        defaults.set(date, forKey: "date")
     }
 
     //Fetches data fro m UserDefaults so settings are saved persistently
@@ -109,6 +119,10 @@ class FoodEnvVar: ObservableObject{
         totalFatConsumedInADay = defaults.float(forKey: "totalFatConsumedInADay")
         totalCaloriesAllowedInADat = defaults.float(forKey: "totalCaloriesAllowedInADat")
         totalCaloriesConsumedInADay = defaults.float(forKey: "totalCaloriesConsumedInADay")
+        
+        if let temp = defaults.object(forKey: "date") as? Date{
+            date = temp
+        }
     }
     
     func updateFoodEnvVars(food:Food){

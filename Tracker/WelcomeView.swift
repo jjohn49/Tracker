@@ -46,6 +46,7 @@ struct WelcomeView: View {
             .onAppear{
             foodEnvVar.fetchFromDefaults()
             foodEnvVar.isItANewDay()
+            //print(foodEnvVar.date)
         }
     }
 
@@ -124,10 +125,12 @@ struct NutritionView: View {
         let caloriesLeft = foodEnvVar.totalCaloriesAllowedInADat - foodEnvVar.totalCaloriesConsumedInADay
         NavigationView {
             VStack{
+                Text("For the Day of: \(foodEnvVar.dateToStrShortVersion())").font(.subheadline)
                 VStack {
                     Text("Calories Left: " + String(caloriesLeft)).padding().font(.title2)
                     ProgressView(value: getPercentage(consumed: foodEnvVar.totalCaloriesConsumedInADay, allowed: foodEnvVar.totalCaloriesAllowedInADat))
-                        .padding().progressViewStyle(RoundedRectProgressViewStyle())
+                        .progressViewStyle(RoundedRectProgressViewStyle())
+                        .padding(EdgeInsets(top: 20, leading: 30, bottom: 20, trailing: 30))
                 }.background(.mint).cornerRadius(10)
                 VStack{
                     Text("Protein: " + String(foodEnvVar.totalProteinConsumedInADay) + "g")
@@ -136,16 +139,23 @@ struct NutritionView: View {
                     
                     Text("Carbs: " + String(foodEnvVar.totalCarbsConsumedInADay) + "g")
                     ProgressView(value: getPercentage(consumed: foodEnvVar.totalCarbsConsumedInADay, allowed: foodEnvVar.carbGoal)).progressViewStyle(RoundedRectProgressViewStyle())
-                    
                     Text("Fat: " + String(foodEnvVar.totalFatConsumedInADay) + "g")
                     ProgressView(value: getPercentage(consumed: foodEnvVar.totalFatConsumedInADay, allowed: foodEnvVar.fatGoal)).progressViewStyle(RoundedRectProgressViewStyle())
                 }
-                .padding()
+                .padding(EdgeInsets(top: 10, leading: 30, bottom: 20, trailing: 30))
                 .background(.tint)
                 .cornerRadius(10)
                 //add better styling
+                /*Button(action: {
+                    foodEnvVar.totalCaloriesConsumedInADay = 0
+                    foodEnvVar.totalProteinConsumedInADay = 0
+                    foodEnvVar.totalCarbsConsumedInADay = 0
+                    foodEnvVar.totalFatConsumedInADay = 0
+                    foodEnvVar.saveToDefaults()
+                }, label: {
+                    Text("Clear")
+                })*/
             }
-            .padding()
             .navigationTitle("Macros")
         }
     }
