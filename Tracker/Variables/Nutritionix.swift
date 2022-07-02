@@ -51,7 +51,6 @@ class FoodResponse: ObservableObject{
             print("URL ERROR: ")
             print("THE URL: \(createURL(food: food))")
             fatalError("Mising url")
-            
         }
         
         let urlReq = URLRequest(url: url)

@@ -19,30 +19,28 @@ struct AddFoodView: View {
     @State var searching = false
     
     var body: some View {
-        NavigationView {
-            VStack{
-                VStack(alignment: .leading) {
-                    SearchBar(searchFood: $searchFood, searching: $searching, hits: hits)
-                        .navigationTitle(searching ? "Searching Food" : (searchFood.isEmpty ? "Search A Food" : searchFood))
-                        .toolbar{
-                            ToolbarItem(placement: .navigationBarTrailing, content: {
-                                NavigationLink(destination: {
-                                    CreateCustomFood()
-                                }, label: {
-                                    Text("Create Food")
-                                })
+        VStack{
+            VStack(alignment: .leading) {
+                SearchBar(searchFood: $searchFood, searching: $searching, hits: hits)
+                    .navigationTitle(searching ? "Searching Food" : (searchFood.isEmpty ? "Search A Food" : searchFood))
+                    .toolbar{
+                        ToolbarItem(placement: .navigationBarTrailing, content: {
+                            NavigationLink(destination: {
+                                CreateCustomFoodView()
+                            }, label: {
+                                Text("Create Food")
                             })
-                        }
-                }
-                List{
-                    if !hits.foodSearchRespnse.isEmpty{
-                        ForEach(hits.foodSearchRespnse, id: \.self){ hit in
-                            let tempFood = Food(name: hit.fields.item_name, brand: hit.fields.brand_name, servingSize: hit.fields.nf_serving_size_unit, calories: hit.fields.nf_calories, protein: hit.fields.nf_protein, carbs: hit.fields.nf_total_carbohydrate, fat: hit.fields.nf_total_fat)
-                            AddFoodRow(food: tempFood)
-                        }
-                    }else if searchFood != "" && !searching{
-                        Text("No Results for \(searchFood)")
+                        })
                     }
+            }
+            List{
+                if !hits.foodSearchRespnse.isEmpty{
+                    ForEach(hits.foodSearchRespnse, id: \.self){ hit in
+                        let tempFood = Food(name: hit.fields.item_name, brand: hit.fields.brand_name, servingSize: hit.fields.nf_serving_size_unit, calories: hit.fields.nf_calories, protein: hit.fields.nf_protein, carbs: hit.fields.nf_total_carbohydrate, fat: hit.fields.nf_total_fat)
+                        AddFoodRow(food: tempFood)
+                    }
+                }else if searchFood != "" && !searching{
+                    Text("No Results for \(searchFood)")
                 }
             }
         }

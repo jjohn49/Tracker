@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E1B72AC28577F9100CE4CBB /* CreateCustomFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1B72AB28577F9100CE4CBB /* CreateCustomFood.swift */; };
-		1E3D2F1E2852A15600E4BC3C /* FoodDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D2F1D2852A15600E4BC3C /* FoodDetail.swift */; };
-		1E70C4022863984C00B8B0D3 /* GoalRows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E70C4012863984C00B8B0D3 /* GoalRows.swift */; };
+		1E1B72AC28577F9100CE4CBB /* CreateCustomFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1B72AB28577F9100CE4CBB /* CreateCustomFoodView.swift */; };
+		1E35F59C28708371008D2379 /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E35F59B28708371008D2379 /* NutritionView.swift */; };
+		1E35F59E287083C2008D2379 /* FoodConsumedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E35F59D287083C2008D2379 /* FoodConsumedListView.swift */; };
+		1E3D2F1E2852A15600E4BC3C /* FoodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D2F1D2852A15600E4BC3C /* FoodDetailView.swift */; };
+		1E70C4022863984C00B8B0D3 /* MacroGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E70C4012863984C00B8B0D3 /* MacroGoalView.swift */; };
 		1E89F149284FD56D00655DB1 /* TrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89F148284FD56D00655DB1 /* TrackerApp.swift */; };
 		1E89F14B284FD56D00655DB1 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89F14A284FD56D00655DB1 /* WelcomeView.swift */; };
 		1E89F14D284FD56E00655DB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E89F14C284FD56E00655DB1 /* Assets.xcassets */; };
@@ -19,12 +21,13 @@
 		1E89F166284FD56E00655DB1 /* TrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89F165284FD56E00655DB1 /* TrackerUITestsLaunchTests.swift */; };
 		1E89F173284FDD1300655DB1 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89F172284FDD1300655DB1 /* Food.swift */; };
 		1E89F175284FE23D00655DB1 /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89F174284FE23D00655DB1 /* AddFoodView.swift */; };
+		1E8B2B17286DEDCF0060BD54 /* LiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8B2B16286DEDCF0060BD54 /* LiftView.swift */; };
 		1E9E6CFA28660E3B00889EC5 /* FoodEnviormentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9E6CF928660E3B00889EC5 /* FoodEnviormentVariables.swift */; };
 		1E9E6CFC2866167700889EC5 /* ProgressViewStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9E6CFB2866167700889EC5 /* ProgressViewStyles.swift */; };
 		1EA822F128610186006D3360 /* AddFoodRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA822F028610186006D3360 /* AddFoodRow.swift */; };
 		1EB6D1F72857F7B000893FF8 /* FoodConsumedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB6D1F62857F7B000893FF8 /* FoodConsumedRow.swift */; };
 		1EB6D2002858233300893FF8 /* Nutritionix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB6D1FF2858233300893FF8 /* Nutritionix.swift */; };
-		1EDA5C962863E761003169D6 /* SetPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDA5C952863E761003169D6 /* SetPreferences.swift */; };
+		1EDA5C962863E761003169D6 /* SetPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDA5C952863E761003169D6 /* SetPreferencesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,9 +48,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1E1B72AB28577F9100CE4CBB /* CreateCustomFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomFood.swift; sourceTree = "<group>"; };
-		1E3D2F1D2852A15600E4BC3C /* FoodDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetail.swift; sourceTree = "<group>"; };
-		1E70C4012863984C00B8B0D3 /* GoalRows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalRows.swift; sourceTree = "<group>"; };
+		1E1B72AB28577F9100CE4CBB /* CreateCustomFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomFoodView.swift; sourceTree = "<group>"; };
+		1E35F59B28708371008D2379 /* NutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionView.swift; sourceTree = "<group>"; };
+		1E35F59D287083C2008D2379 /* FoodConsumedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodConsumedListView.swift; sourceTree = "<group>"; };
+		1E3D2F1D2852A15600E4BC3C /* FoodDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailView.swift; sourceTree = "<group>"; };
+		1E70C4012863984C00B8B0D3 /* MacroGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroGoalView.swift; sourceTree = "<group>"; };
 		1E89F145284FD56D00655DB1 /* Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E89F148284FD56D00655DB1 /* TrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerApp.swift; sourceTree = "<group>"; };
 		1E89F14A284FD56D00655DB1 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -60,12 +65,13 @@
 		1E89F165284FD56E00655DB1 /* TrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1E89F172284FDD1300655DB1 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		1E89F174284FE23D00655DB1 /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
+		1E8B2B16286DEDCF0060BD54 /* LiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftView.swift; sourceTree = "<group>"; };
 		1E9E6CF928660E3B00889EC5 /* FoodEnviormentVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEnviormentVariables.swift; sourceTree = "<group>"; };
 		1E9E6CFB2866167700889EC5 /* ProgressViewStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewStyles.swift; sourceTree = "<group>"; };
 		1EA822F028610186006D3360 /* AddFoodRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodRow.swift; sourceTree = "<group>"; };
 		1EB6D1F62857F7B000893FF8 /* FoodConsumedRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodConsumedRow.swift; sourceTree = "<group>"; };
 		1EB6D1FF2858233300893FF8 /* Nutritionix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nutritionix.swift; sourceTree = "<group>"; };
-		1EDA5C952863E761003169D6 /* SetPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPreferences.swift; sourceTree = "<group>"; };
+		1EDA5C952863E761003169D6 /* SetPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPreferencesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E35F59828708111008D2379 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1E89F14A284FD56D00655DB1 /* WelcomeView.swift */,
+				1E70C4012863984C00B8B0D3 /* MacroGoalView.swift */,
+				1EDA5C952863E761003169D6 /* SetPreferencesView.swift */,
+				1E3D2F1D2852A15600E4BC3C /* FoodDetailView.swift */,
+				1E89F174284FE23D00655DB1 /* AddFoodView.swift */,
+				1E8B2B16286DEDCF0060BD54 /* LiftView.swift */,
+				1E1B72AB28577F9100CE4CBB /* CreateCustomFoodView.swift */,
+				1E35F59B28708371008D2379 /* NutritionView.swift */,
+				1E35F59D287083C2008D2379 /* FoodConsumedListView.swift */,
+				1E35F599287081CE008D2379 /* Rows */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1E35F599287081CE008D2379 /* Rows */ = {
+			isa = PBXGroup;
+			children = (
+				1EB6D1F62857F7B000893FF8 /* FoodConsumedRow.swift */,
+				1EA822F028610186006D3360 /* AddFoodRow.swift */,
+			);
+			path = Rows;
+			sourceTree = "<group>";
+		};
+		1E35F59A287081F5008D2379 /* Variables */ = {
+			isa = PBXGroup;
+			children = (
+				1EB6D1FF2858233300893FF8 /* Nutritionix.swift */,
+				1E89F172284FDD1300655DB1 /* Food.swift */,
+				1E9E6CF928660E3B00889EC5 /* FoodEnviormentVariables.swift */,
+			);
+			path = Variables;
+			sourceTree = "<group>";
+		};
+		1E35F59F2870848A008D2379 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				1E9E6CFB2866167700889EC5 /* ProgressViewStyles.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 		1E89F13C284FD56D00655DB1 = {
 			isa = PBXGroup;
 			children = (
@@ -117,18 +167,9 @@
 			isa = PBXGroup;
 			children = (
 				1E89F148284FD56D00655DB1 /* TrackerApp.swift */,
-				1E9E6CF928660E3B00889EC5 /* FoodEnviormentVariables.swift */,
-				1E89F172284FDD1300655DB1 /* Food.swift */,
-				1E89F14A284FD56D00655DB1 /* WelcomeView.swift */,
-				1E89F174284FE23D00655DB1 /* AddFoodView.swift */,
-				1E3D2F1D2852A15600E4BC3C /* FoodDetail.swift */,
-				1E1B72AB28577F9100CE4CBB /* CreateCustomFood.swift */,
-				1EB6D1F62857F7B000893FF8 /* FoodConsumedRow.swift */,
-				1EDA5C952863E761003169D6 /* SetPreferences.swift */,
-				1EB6D1FF2858233300893FF8 /* Nutritionix.swift */,
-				1EA822F028610186006D3360 /* AddFoodRow.swift */,
-				1E70C4012863984C00B8B0D3 /* GoalRows.swift */,
-				1E9E6CFB2866167700889EC5 /* ProgressViewStyles.swift */,
+				1E35F59828708111008D2379 /* Views */,
+				1E35F59A287081F5008D2379 /* Variables */,
+				1E35F59F2870848A008D2379 /* Styles */,
 				1E89F14C284FD56E00655DB1 /* Assets.xcassets */,
 				1E89F14E284FD56E00655DB1 /* Preview Content */,
 			);
@@ -291,13 +332,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EA822F128610186006D3360 /* AddFoodRow.swift in Sources */,
+				1E8B2B17286DEDCF0060BD54 /* LiftView.swift in Sources */,
+				1E35F59E287083C2008D2379 /* FoodConsumedListView.swift in Sources */,
 				1E89F175284FE23D00655DB1 /* AddFoodView.swift in Sources */,
 				1EB6D2002858233300893FF8 /* Nutritionix.swift in Sources */,
 				1E89F14B284FD56D00655DB1 /* WelcomeView.swift in Sources */,
-				1E1B72AC28577F9100CE4CBB /* CreateCustomFood.swift in Sources */,
-				1EDA5C962863E761003169D6 /* SetPreferences.swift in Sources */,
-				1E70C4022863984C00B8B0D3 /* GoalRows.swift in Sources */,
-				1E3D2F1E2852A15600E4BC3C /* FoodDetail.swift in Sources */,
+				1E1B72AC28577F9100CE4CBB /* CreateCustomFoodView.swift in Sources */,
+				1EDA5C962863E761003169D6 /* SetPreferencesView.swift in Sources */,
+				1E70C4022863984C00B8B0D3 /* MacroGoalView.swift in Sources */,
+				1E3D2F1E2852A15600E4BC3C /* FoodDetailView.swift in Sources */,
+				1E35F59C28708371008D2379 /* NutritionView.swift in Sources */,
 				1E9E6CFA28660E3B00889EC5 /* FoodEnviormentVariables.swift in Sources */,
 				1E89F149284FD56D00655DB1 /* TrackerApp.swift in Sources */,
 				1EB6D1F72857F7B000893FF8 /* FoodConsumedRow.swift in Sources */,

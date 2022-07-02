@@ -9,14 +9,14 @@ import SwiftUI
 
 
 
-struct SetPreferences: View {
+struct SetPreferencesView: View {
     @EnvironmentObject var foodEnvVar: FoodEnvVar
     var body: some View{
         NavigationView {
             VStack{
                 //maybe add a new view for weight and height
                 MacroPreferences()
-                    .navigationTitle("Set Goals")
+                    .navigationTitle("Account")
                 
                 Button(action: {
                     foodEnvVar.setPreferences = true
@@ -25,6 +25,19 @@ struct SetPreferences: View {
                     Text("Set Goals").padding(EdgeInsets(top: 5, leading: 50, bottom: 5, trailing: 50))
                 }).padding().background(.tint).foregroundColor(.white).cornerRadius(10)
             }
+        }
+    }
+}
+
+//this is hwere they are going to add there weight, their goal weight, and how long they want this to take in order to calculate how much they need to eat per day as a baseline
+struct WeightPreferences: View{
+    @EnvironmentObject var foodEnvVar: FoodEnvVar
+    @State var tempWeight: String
+    @State var tempIdealWeight: String
+    var body: some View{
+        VStack{
+            TextField("Enter Weight in lbs.  Ex: 200", text: $tempWeight)
+            TextField("Enter your ideal weight in lbs.  Ex: 180", text: $tempIdealWeight)
         }
     }
 }
@@ -70,8 +83,8 @@ struct MacroPreferences: View{
     }
 }
 
-struct SetPreferences_Previews: PreviewProvider {
+struct SetPreferencesView_Previews: PreviewProvider {
     static var previews: some View {
-        SetPreferences().environmentObject(FoodEnvVar())
+        SetPreferencesView().environmentObject(FoodEnvVar())
     }
 }

@@ -11,7 +11,7 @@ struct AddFoodRow: View {
     var food: Food
     var body: some View {
         VStack{
-            NavigationLink(destination: FoodDetail(food: food).navigationTitle(food.name), label: {
+            NavigationLink(destination: FoodDetailView(food: food).navigationTitle(food.name), label: {
                 VStack {
                     Text(food.name)
                         .bold()
