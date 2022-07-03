@@ -55,6 +55,7 @@ struct MacroPreferences: View{
             Section(header: Text("Macros"), content: {
                 HStack {
                     Text("Protein Goal")
+                    Spacer()
                     TextField("Protein Goal: ", value: $foodEnvVar.proteinGoal, formatter: NumberFormatter()).onSubmit {
                         foodEnvVar.totalCaloriesAllowedInADat += foodEnvVar.proteinGoal * 4
                         setPref()
@@ -74,6 +75,7 @@ struct MacroPreferences: View{
                 
                 HStack {
                     Text("Carb Goal")
+                    Spacer()
                     TextField("Carb Goal: ", value: $foodEnvVar.carbGoal, formatter: NumberFormatter()).onSubmit {
                         foodEnvVar.totalCaloriesAllowedInADat += foodEnvVar.carbGoal * 4
                         setPref()
@@ -93,7 +95,8 @@ struct MacroPreferences: View{
                 
                 HStack {
                     Text("Fat Goal")
-                    TextField("Fat Goal: ", value: $foodEnvVar.fatGoal, formatter: NumberFormatter()).onSubmit {
+                    Spacer()
+                    TextField("Fat Goal:", value: $foodEnvVar.fatGoal, formatter: NumberFormatter()).onSubmit {
                         foodEnvVar.totalCaloriesAllowedInADat += foodEnvVar.fatGoal * 8
                         setPref()
                     }.padding()
