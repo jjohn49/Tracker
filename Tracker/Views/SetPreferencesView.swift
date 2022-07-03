@@ -46,33 +46,71 @@ struct MacroPreferences: View{
     @EnvironmentObject var foodEnvVar: FoodEnvVar
     
     var body: some View {
-        VStack{
+        Form{
             //Text("The Date is: \(foodEnvVar.dateToStr())")
-            Text("Cals Per Day: \(foodEnvVar.totalCaloriesAllowedInADat)").font(.title).padding()
+            Section(header: Text(""), content: {
+                Text("Cals Per Day: \(foodEnvVar.totalCaloriesAllowedInADat)")
+            })
             
-            HStack {
-                Text("Protein Goal").padding().font(.title3)
-                TextField("Protein Goal: ", value: $foodEnvVar.proteinGoal, formatter: NumberFormatter()).onSubmit {
-                    foodEnvVar.totalCaloriesAllowedInADat += foodEnvVar.proteinGoal * 4
-                    setPref()
-                }.padding()
-            }
+            Section(header: Text("Macros"), content: {
+                HStack {
+                    Text("Protein Goal")
+                    TextField("Protein Goal: ", value: $foodEnvVar.proteinGoal, formatter: NumberFormatter()).onSubmit {
+                        foodEnvVar.totalCaloriesAllowedInADat += foodEnvVar.proteinGoal * 4
+                        setPref()
+                    }.padding()
+                    Stepper{
+                        Text("")
+                    }onIncrement: {
+                        foodEnvVar.proteinGoal += 1
+                        foodEnvVar.totalCaloriesAllowedInADat += 4
+                    } onDecrement: {
+                        if foodEnvVar.proteinGoal > 0{
+                            foodEnvVar.proteinGoal -= 1
+                            foodEnvVar.totalCaloriesAllowedInADat -= 4
+                        }
+                    }
+                }
+                
+                HStack {
+                    Text("Carb Goal")
+                    TextField("Carb Goal: ", value: $foodEnvVar.carbGoal, formatter: NumberFormatter()).onSubmit {
+                        foodEnvVar.totalCaloriesAllowedInADat += foodEnvVar.carbGoal * 4
+                        setPref()
+                    }.padding()
+                    Stepper{
+                        Text("")
+                    }onIncrement: {
+                        foodEnvVar.carbGoal += 1
+                        foodEnvVar.totalCaloriesAllowedInADat += 4
+                    } onDecrement: {
+                        if foodEnvVar.carbGoal > 0{
+                            foodEnvVar.carbGoal -= 1
+                            foodEnvVar.totalCaloriesAllowedInADat -= 4
+                        }
+                    }
+                }
+                
+                HStack {
+                    Text("Fat Goal")
+                    TextField("Fat Goal: ", value: $foodEnvVar.fatGoal, formatter: NumberFormatter()).onSubmit {
+                        foodEnvVar.totalCaloriesAllowedInADat += foodEnvVar.fatGoal * 8
+                        setPref()
+                    }.padding()
+                    Stepper{
+                        Text("")
+                    }onIncrement: {
+                        foodEnvVar.fatGoal += 1
+                        foodEnvVar.totalCaloriesAllowedInADat += 8
+                    } onDecrement: {
+                        if foodEnvVar.fatGoal > 0{
+                            foodEnvVar.fatGoal -= 1
+                            foodEnvVar.totalCaloriesAllowedInADat -= 8
+                        }
+                    }
+                }
+            })
             
-            HStack {
-                Text("Carb Goal").padding().font(.title3)
-                TextField("Carb Goal: ", value: $foodEnvVar.carbGoal, formatter: NumberFormatter()).onSubmit {
-                    foodEnvVar.totalCaloriesAllowedInADat += foodEnvVar.carbGoal * 4
-                    setPref()
-                }.padding()
-            }
-            
-            HStack {
-                Text("Fat Goal").padding().font(.title3)
-                TextField("Fat Goal: ", value: $foodEnvVar.fatGoal, formatter: NumberFormatter()).onSubmit {
-                    foodEnvVar.totalCaloriesAllowedInADat += foodEnvVar.fatGoal * 8
-                    setPref()
-                }.padding()
-            }
         }.padding()
     }
     
