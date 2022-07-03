@@ -26,7 +26,10 @@ struct NutritionView: View {
         NavigationView {
             VStack{
                 //this date picker will allow you to access the data from other days
-                DatePicker(selection: $foodEnvVar.date, label: { Text("For:").padding() })
+                //Text(String(foodEnvVar.isItANewDay()))
+                
+                DatePicker("", selection: $foodEnvVar.date, displayedComponents: [.date])
+                    .frame(alignment: .center)
                 VStack {
                     Text("Calories Left: " + String(caloriesLeft)).padding().font(.title2)
                     ProgressView(value: getPercentage(consumed: foodEnvVar.totalCaloriesConsumedInADay, allowed: foodEnvVar.totalCaloriesAllowedInADat))

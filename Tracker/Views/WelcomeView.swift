@@ -45,8 +45,9 @@ struct WelcomeView: View {
         }.environmentObject(foodEnvVar)
             .onAppear{
             foodEnvVar.fetchFromDefaults()
-            foodEnvVar.isItANewDay()
-            //print(foodEnvVar.date)
+                if foodEnvVar.isItANewDay(){
+                    foodEnvVar.newDay()
+                }
         }
     }
 

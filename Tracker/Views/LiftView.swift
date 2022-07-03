@@ -34,13 +34,13 @@ struct LiftView: View {
                     }
             }else{
                 VStack {
-                    Text("No lifts yet")
+                    Text("No lifts yet").font(.title2)
                         .navigationTitle("Lifts")
                     NavigationLink(destination: {
                         addPR(prList: $prList)
                                     }, label: {
-                                        Text("Add a PR")
-                                    })
+                                        Text("Add a PR").padding()
+                                    }).background(.tint).foregroundColor(.white).cornerRadius(10)
                 }
                 
             }
@@ -99,7 +99,7 @@ struct addPR: View{
                     
                 }
             }, label: {
-                Text("Add PR").font(.title2).bold().foregroundColor(.white).background(.tint).cornerRadius(10)
+                Text("Add PR")
             })
             .navigationTitle("Add PR")
         }

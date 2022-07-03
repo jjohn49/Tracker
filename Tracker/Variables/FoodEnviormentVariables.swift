@@ -58,10 +58,7 @@ class FoodEnvVar: ObservableObject{
     
     //NEED TO FIX ----------------------------------------------------------
     //checks to see if it is a new day and calls the newDay method
-    func isItANewDay() -> Bool{
-        if !Calendar.current.isDateInToday(date){
-            newDay()
-        }
+    func isItANewDay()-> Bool{
         return !Calendar.current.isDateInToday(date)
     }
     
@@ -73,6 +70,7 @@ class FoodEnvVar: ObservableObject{
         totalProteinConsumedInADay = 0
         totalCarbsConsumedInADay = 0
         totalFatConsumedInADay = 0
+        foodCosumedListVar = []
     }
     //-------------------------------------------------------------------------
     
