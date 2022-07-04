@@ -48,6 +48,7 @@ struct LiftGoalView: View {
     }
 }
 
+
 struct AddLiftGoal: View{
     @EnvironmentObject var foodEnvVar: FoodEnvVar
     @State var name: String = ""
