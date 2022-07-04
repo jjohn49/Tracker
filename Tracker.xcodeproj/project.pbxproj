@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1E1B72AC28577F9100CE4CBB /* CreateCustomFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1B72AB28577F9100CE4CBB /* CreateCustomFoodView.swift */; };
+		1E2F5372287316F00005AF06 /* LiftGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F5371287316F00005AF06 /* LiftGoalView.swift */; };
 		1E35F59C28708371008D2379 /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E35F59B28708371008D2379 /* NutritionView.swift */; };
 		1E35F59E287083C2008D2379 /* FoodConsumedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E35F59D287083C2008D2379 /* FoodConsumedListView.swift */; };
 		1E3D2F1E2852A15600E4BC3C /* FoodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D2F1D2852A15600E4BC3C /* FoodDetailView.swift */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		1E1B72AB28577F9100CE4CBB /* CreateCustomFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomFoodView.swift; sourceTree = "<group>"; };
+		1E2F5371287316F00005AF06 /* LiftGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftGoalView.swift; sourceTree = "<group>"; };
 		1E35F59B28708371008D2379 /* NutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionView.swift; sourceTree = "<group>"; };
 		1E35F59D287083C2008D2379 /* FoodConsumedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodConsumedListView.swift; sourceTree = "<group>"; };
 		1E3D2F1D2852A15600E4BC3C /* FoodDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailView.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			children = (
 				1E89F14A284FD56D00655DB1 /* WelcomeView.swift */,
 				1E70C4012863984C00B8B0D3 /* MacroGoalView.swift */,
+				1E2F5371287316F00005AF06 /* LiftGoalView.swift */,
 				1EDA5C952863E761003169D6 /* SetPreferencesView.swift */,
 				1E3D2F1D2852A15600E4BC3C /* FoodDetailView.swift */,
 				1E89F174284FE23D00655DB1 /* AddFoodView.swift */,
@@ -346,6 +349,7 @@
 				1E89F149284FD56D00655DB1 /* TrackerApp.swift in Sources */,
 				1EB6D1F72857F7B000893FF8 /* FoodConsumedRow.swift in Sources */,
 				1E89F173284FDD1300655DB1 /* Food.swift in Sources */,
+				1E2F5372287316F00005AF06 /* LiftGoalView.swift in Sources */,
 				1E9E6CFC2866167700889EC5 /* ProgressViewStyles.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
