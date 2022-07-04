@@ -16,25 +16,27 @@ struct Goal: Identifiable{
 }
 
 struct LiftGoalView: View {
-    @Binding var popUp: Bool
+    
+    @EnvironmentObject var foodEnvVar: FoodEnvVar
+    /*@Binding var popUp: Bool
     //this is temporary till I decide whether I want to store this in defaults, core data, or some other place
-    @Binding var list: [Goal]
+    @Binding var list: [Goal]*/
     var body: some View {
-        if list.isEmpty{
+        if foodEnvVar.liftGoals.isEmpty{
             VStack {
                 Text("No Lifting Goals yet")
                 Button(action: {
-                    popUp.toggle()
+                    foodEnvVar.popUp.toggle()
                 }, label: {
                     Text("Create Lifting Goal")
-                }).popover(isPresented: $popUp, content: {
-                    AddLiftGoal(popUp: $popUp, list: $list)
+                }).popover(isPresented: $foodEnvVar.popUp, content: {
+                    AddLiftGoal()
                 })
             }
         }else{
             List{
                 Text("Lift Goals")
-                ForEach(list){ goal in
+                ForEach(foodEnvVar.liftGoals){ goal in
                     VStack{
                         Text("\(goal.name)")
                     }
@@ -45,8 +47,7 @@ struct LiftGoalView: View {
 }
 
 struct AddLiftGoal: View{
-    @Binding var popUp: Bool
-    @Binding var list: [Goal]
+    @EnvironmentObject var foodEnvVar: FoodEnvVar
     @State var name: String = ""
     @State var weightStr: String = ""
     @State var weightInt: Int = 0
@@ -79,9 +80,9 @@ struct AddLiftGoal: View{
             })
             
             Button(action: {
-                popUp = false
+                foodEnvVar.popUp = false
                 //append the new goal to the list
-                list.append(Goal(name: name, weight: weightInt, deadline: deadline, description: description))
+                foodEnvVar.liftGoals.append(Goal(name: name, weight: weightInt, deadline: deadline, description: description))
             }, label: {
                 Text("Add Goal")
             })

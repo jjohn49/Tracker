@@ -28,6 +28,9 @@ class FoodEnvVar: ObservableObject{
     
     @Published var weight: Float = 0
     
+    @Published var popUp: Bool = false
+    @Published var liftGoals: [Goal] = []
+    
     
     //this method essentially does the calculations of how many calories are consumed from meeting all your macro goals
     //Makes less code in the GoalRows.swift file
