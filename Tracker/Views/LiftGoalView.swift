@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct Goal{
+struct Goal: Identifiable{
+    let id = UUID()
     let name: String
     let weight: Int
     let deadline: Date
@@ -16,6 +17,7 @@ struct Goal{
 
 struct LiftGoalView: View {
     @State var popUp: Bool = false
+    //this is temporary till I decide whether I want to store this in defaults, core data, or some other place
     @State var list: [Goal] = []
     var body: some View {
         if list.isEmpty{
@@ -26,18 +28,25 @@ struct LiftGoalView: View {
                 }, label: {
                     Text("Create Lifting Goal")
                 }).popover(isPresented: $popUp, content: {
-                    AddLiftGoal(popUp: $popUp)
+                    AddLiftGoal(popUp: $popUp, list: $list)
                 })
             }
-           
         }else{
-            
+            List{
+                Text("Lift Goals")
+                ForEach(list){ goal in
+                    VStack{
+                        Text("\(goal.name)")
+                    }
+                }
+            }
         }
     }
 }
 
 struct AddLiftGoal: View{
     @Binding var popUp: Bool
+    @Binding var list: [Goal]
     @State var name: String = ""
     @State var weightStr: String = ""
     @State var weightInt: Int = 0
@@ -72,6 +81,7 @@ struct AddLiftGoal: View{
             Button(action: {
                 popUp = false
                 //append the new goal to the list
+                list.append(Goal(name: name, weight: weightInt, deadline: deadline, description: description))
             }, label: {
                 Text("Add Goal")
             })

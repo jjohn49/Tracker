@@ -60,6 +60,7 @@ struct GoalsView: View{
         NavigationView{
             List {
                 MacroGoalView()
+                LiftGoalView()
                 .navigationTitle("Goals")
                 .toolbar{
                     ToolbarItem(content: {
