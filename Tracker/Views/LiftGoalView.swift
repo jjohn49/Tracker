@@ -16,9 +16,9 @@ struct Goal: Identifiable{
 }
 
 struct LiftGoalView: View {
-    @State var popUp: Bool = false
+    @Binding var popUp: Bool
     //this is temporary till I decide whether I want to store this in defaults, core data, or some other place
-    @State var list: [Goal] = []
+    @Binding var list: [Goal]
     var body: some View {
         if list.isEmpty{
             VStack {
@@ -89,9 +89,17 @@ struct AddLiftGoal: View{
     }
 }
 
+struct s: View{
+    var body: some View{
+        Text("Hello")
+    }
+}
+
 struct LiftGoalView_Previews: PreviewProvider {
+    @State var b: Bool = false
     static var previews: some View {
-        LiftGoalView()
+        //LiftGoalView(popUp: $b)
         //AddLiftGoal()
+        s()
     }
 }

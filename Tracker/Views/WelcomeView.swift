@@ -56,21 +56,41 @@ struct WelcomeView: View {
 struct GoalsView: View{
     @EnvironmentObject var foodEnvVar: FoodEnvVar
     
+    //temporary
+    @State var popUp: Bool = false
+    @State var list: [Goal] = []
     var body: some View{
         NavigationView{
             List {
                 MacroGoalView()
-                LiftGoalView()
+                LiftGoalView(popUp: $popUp, list: $list)
+                
                 .navigationTitle("Goals")
+                
                 .toolbar{
-                    ToolbarItem(content: {
-                        Button(action: {
-                            foodEnvVar.setPreferences.toggle()
-                        }, label: {
-                            Label("Set Goals", systemImage: "brain")
+                    ToolbarItem{
+                        Menu(content:{
+                            Button(action: {
+                                foodEnvVar.setPreferences.toggle()
+                            }, label: {
+                                Label("Set Goals", systemImage: "brain")
+                            }).popover(isPresented: $foodEnvVar.setPreferences, content: {
+                                SetPreferencesView()
+                            })
+                            
+                            Button(action: {
+                                popUp.toggle()
+                            }, label: {
+                                Text("Create Lifting Goal")
+                            }).popover(isPresented: $popUp, content: {
+                                AddLiftGoal(popUp: $popUp, list: $list)
+                            })
+                        },
+                             label: {
+                            Label("Add", systemImage: "plus")
                         })
-                    })
-            }
+                    }
+                }
             }
         }
     }
