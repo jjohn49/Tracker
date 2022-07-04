@@ -63,7 +63,7 @@ struct GoalsView: View{
         NavigationView{
             List {
                 MacroGoalView()
-                LiftGoalView()
+                LiftGoalView().frame(width: 300,height: 300)
                 
                 .navigationTitle("Goals")
                 

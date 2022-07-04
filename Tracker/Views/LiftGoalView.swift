@@ -34,11 +34,13 @@ struct LiftGoalView: View {
                 })
             }
         }else{
-            List{
-                Text("Lift Goals")
-                ForEach(foodEnvVar.liftGoals){ goal in
-                    VStack{
-                        Text("\(goal.name)")
+            VStack {
+                Text("Lift Goals").font(.title2).bold()
+                List{
+                    ForEach(foodEnvVar.liftGoals){ goal in
+                        VStack{
+                            Text("\(goal.name)")
+                        }
                     }
                 }
             }
@@ -90,17 +92,13 @@ struct AddLiftGoal: View{
     }
 }
 
-struct s: View{
-    var body: some View{
-        Text("Hello")
-    }
-}
+
 
 struct LiftGoalView_Previews: PreviewProvider {
     @State var b: Bool = false
     static var previews: some View {
-        //LiftGoalView(popUp: $b)
+        LiftGoalView().environmentObject(FoodEnvVar())
         //AddLiftGoal()
-        s()
+        
     }
 }
