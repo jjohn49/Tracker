@@ -36,7 +36,7 @@ struct AddFoodView: View {
             List{
                 if !hits.foodSearchRespnse.isEmpty{
                     ForEach(hits.foodSearchRespnse, id: \.self){ hit in
-                        let tempFood = Food(name: hit.fields.item_name, brand: hit.fields.brand_name, servingSize: hit.fields.nf_serving_size_unit, calories: hit.fields.nf_calories, protein: hit.fields.nf_protein, carbs: hit.fields.nf_total_carbohydrate, fat: hit.fields.nf_total_fat)
+                        let tempFood = Food(name: hit.fields.item_name, brand: hit.fields.brand_name, servingSize: hit.fields.nf_serving_size_unit ?? "", calories: hit.fields.nf_calories ?? 0, protein: hit.fields.nf_protein ?? 0, carbs: hit.fields.nf_total_carbohydrate ?? 0, fat: hit.fields.nf_total_fat ?? 0)
                         AddFoodRow(food: tempFood)
                     }
                 }else if searchFood != "" && !searching{
@@ -75,7 +75,7 @@ struct SearchBar: View {
                     withAnimation{
                         searching = false
                     }
-                    hits.getResponse(food: searchFood)
+                    hits.getResponse(food: searchFood, isQRCode: false)
                 }
                 Button(action: {
                     if searchFood != ""{
