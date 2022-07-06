@@ -21,10 +21,13 @@ struct AddFoodView: View {
     
     @State private var show: Bool = false
     
+    @State var ret: String = "Nothing"
+    
     var body: some View {
         VStack{
             VStack(alignment: .leading) {
                 SearchBar(searchFood: $searchFood, searching: $searching, hits: hits)
+                Text("\(ret)")
                     .navigationTitle(searching ? "Searching Food" : (searchFood.isEmpty ? "Search A Food" : searchFood))
                     .toolbar{
                         ToolbarItem (placement: .navigationBarLeading , content: {
@@ -58,7 +61,7 @@ struct AddFoodView: View {
             }
             
         }.sheet(isPresented: $show, content: {
-            CodeScannerView(codeTypes: [.codabar], showViewfinder: true ,simulatedData: "811662021667", completion: handleScan(result:))
+            CodeScannerView(codeTypes:  [.ean13,.ean8,.gs1DataBar,.gs1DataBarLimited,.gs1DataBarExpanded], showViewfinder: true, completion: handleScan(result:))
             
         })
     }
@@ -68,9 +71,11 @@ struct AddFoodView: View {
         switch result {
             case .success(let result):
                 let code = result.string
+                ret = code
                 print("Code is \(code)")
                 hits.getResponse(food: code, isUPCCode: true)
             case .failure(let error):
+                ret = error.localizedDescription
                 print("Scan Failed \(error.localizedDescription)")
         }
         

@@ -74,7 +74,7 @@ class FoodResponse: ObservableObject{
         if !isUPCCode{
             return sanitizeRequest(unsanitizedFoodString: "https://api.nutritionix.com/v1_1/search/\(food)?results=0:20&fields=item_name,brand_name,nf_calories,nf_protein,nf_total,nf_total_carbohydrate,nf_total_fat")
         }else{
-            return sanitizeRequest(unsanitizedFoodString: "https://api.nutritionix.com/v1_1/item?upc=811662021667&appId=5c292bc1&appKey=5f695042009fbed8a06d88f654aadcd1")
+            return sanitizeRequest(unsanitizedFoodString: "https://api.nutritionix.com/v1_1/item?upc=\(food)&appId=5c292bc1&appKey=5f695042009fbed8a06d88f654aadcd1")
         }
     }
     
