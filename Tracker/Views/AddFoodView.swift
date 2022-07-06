@@ -49,7 +49,7 @@ struct AddFoodView: View {
             List{
                 if !hits.foodSearchRespnse.isEmpty{
                     ForEach(hits.foodSearchRespnse, id: \.self){ hit in
-                        let tempFood = Food(name: hit.fields.item_name, brand: hit.fields.brand_name, servingSize: hit.fields.nf_serving_size_unit ?? "", calories: hit.fields.nf_calories ?? 0, protein: hit.fields.nf_protein ?? 0, carbs: hit.fields.nf_total_carbohydrate ?? 0, fat: hit.fields.nf_total_fat ?? 0)
+                        let tempFood = Food(name: hit.fields.item_name ?? "" , brand: hit.fields.brand_name ?? "" , servingSize: hit.fields.nf_serving_size_unit ?? "", calories: hit.fields.nf_calories ?? 0, protein: hit.fields.nf_protein ?? 0, carbs: hit.fields.nf_total_carbohydrate ?? 0, fat: hit.fields.nf_total_fat ?? 0)
                         AddFoodRow(food: tempFood)
                     }
                 }else if searchFood != "" && !searching{
@@ -58,7 +58,7 @@ struct AddFoodView: View {
             }
             
         }.sheet(isPresented: $show, content: {
-            CodeScannerView(codeTypes: [.qr], simulatedData: "811662021667", completion: handleScan(result:))
+            CodeScannerView(codeTypes: [.codabar], showViewfinder: true ,simulatedData: "811662021667", completion: handleScan(result:))
             
         })
     }
@@ -68,6 +68,7 @@ struct AddFoodView: View {
         switch result {
             case .success(let result):
                 let code = result.string
+                print("Code is \(code)")
                 hits.getResponse(food: code, isUPCCode: true)
             case .failure(let error):
                 print("Scan Failed \(error.localizedDescription)")
