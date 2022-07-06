@@ -5,6 +5,7 @@
 //  Created by John Johnston on 6/7/22.
 //
 
+import CodeScanner
 import SwiftUI
 
 struct AddFoodView: View {
@@ -18,19 +19,31 @@ struct AddFoodView: View {
     
     @State var searching = false
     
+    @State private var show: Bool = false
+    
     var body: some View {
         VStack{
             VStack(alignment: .leading) {
                 SearchBar(searchFood: $searchFood, searching: $searching, hits: hits)
                     .navigationTitle(searching ? "Searching Food" : (searchFood.isEmpty ? "Search A Food" : searchFood))
                     .toolbar{
-                        ToolbarItem(placement: .navigationBarTrailing, content: {
+                        ToolbarItem (placement: .navigationBarLeading , content: {
                             NavigationLink(destination: {
                                 CreateCustomFoodView()
                             }, label: {
-                                Text("Create Food")
+                                Text("Custom Food")
                             })
                         })
+                        
+                        ToolbarItem {
+                            Button(action: {
+                                    show = true
+                                }, label: {
+                                    Label("Scan", systemImage: "qrcode.viewfinder")
+                            })
+                        }
+                        
+                        
                     }
             }
             List{
@@ -43,7 +56,24 @@ struct AddFoodView: View {
                     Text("No Results for \(searchFood)")
                 }
             }
+            
+        }.sheet(isPresented: $show, content: {
+            CodeScannerView(codeTypes: [.qr], simulatedData: "811662021667", completion: handleScan(result:))
+            
+        })
+    }
+    
+    func handleScan(result: Result<ScanResult, ScanError>){
+        show = false
+        switch result {
+            case .success(let result):
+                let code = result.string
+                hits.getResponse(food: code, isUPCCode: true)
+            case .failure(let error):
+                print("Scan Failed \(error.localizedDescription)")
         }
+        
+        //return ret
     }
 }
     
@@ -52,7 +82,9 @@ struct AddFoodView: View {
 struct AddFoodView_Previews: PreviewProvider {
     static var previews: some View {
         //should update the previews when creating an enviorment object
-        AddFoodView().environmentObject(FoodEnvVar())
+        NavigationView{
+            AddFoodView().environmentObject(FoodEnvVar())
+        }
     }
 }
 
@@ -61,6 +93,7 @@ struct SearchBar: View {
     @Binding var searching: Bool
     @ObservedObject var hits: FoodResponse
     var body: some View {
+        
         ZStack{
             Rectangle().foregroundColor(.mint)
             HStack {
@@ -75,7 +108,7 @@ struct SearchBar: View {
                     withAnimation{
                         searching = false
                     }
-                    hits.getResponse(food: searchFood, isQRCode: false)
+                    hits.getResponse(food: searchFood, isUPCCode: false)
                 }
                 Button(action: {
                     if searchFood != ""{
@@ -95,5 +128,6 @@ struct SearchBar: View {
         .frame(height: 40)
         .cornerRadius(13)
         .padding()
+        
     }
 }

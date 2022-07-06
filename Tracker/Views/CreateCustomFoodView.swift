@@ -23,23 +23,25 @@ struct CreateCustomFoodView: View {
     @EnvironmentObject var foodEnvVar: FoodEnvVar
     
     var body: some View {
-        VStack{
-            inputFoodDetails(foodName: $foodName, foodBrand: $foodBrand, foodServingSize: $foodServingSize, foodAmount: $foodAmount, foodCals: $foodCals, foodPro: $foodPro, foodCarbs: $foodCarbs, foodFat: $foodFat)
-            Button (action: {
-                //makes sure everything is satisfied so the app doesn't crash
-                if inputIsNotEmpty{
-                    foodEnvVar.updateFoodEnvVars(food: createFood())
-                    //maybe add soemthing that will send this to the database
-                }else{
-                    //add some alert here
-                    foodEnvVar.updateFoodEnvVars(food: createFood())
-                }
-                
-            }, label: {
-                Text("Create and Add Custom Food").foregroundColor(.white).padding()
-            }).background(.tint).cornerRadius(10)
-            .navigationTitle("Custom Food")
-        }.padding()
+        NavigationView {
+            VStack{
+                inputFoodDetails(foodName: $foodName, foodBrand: $foodBrand, foodServingSize: $foodServingSize, foodAmount: $foodAmount, foodCals: $foodCals, foodPro: $foodPro, foodCarbs: $foodCarbs, foodFat: $foodFat)
+                Button (action: {
+                    //makes sure everything is satisfied so the app doesn't crash
+                    if inputIsNotEmpty{
+                        foodEnvVar.updateFoodEnvVars(food: createFood())
+                        //maybe add soemthing that will send this to the database
+                    }else{
+                        //add some alert here
+                        foodEnvVar.updateFoodEnvVars(food: createFood())
+                    }
+                    
+                }, label: {
+                    Text("Create and Add Custom Food").foregroundColor(.white).padding()
+                }).background(.tint).cornerRadius(10)
+                .navigationTitle("Custom Food")
+            }.padding()
+        }
     }
     func createFood() -> Food{
         //chcks to see if all fields were satisfied
