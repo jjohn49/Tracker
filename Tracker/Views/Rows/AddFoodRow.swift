@@ -11,14 +11,14 @@ struct AddFoodRow: View {
     var food: Food
     var body: some View {
         VStack{
-            NavigationLink(destination: FoodDetailView(food: food).navigationTitle(food.name), label: {
+            NavigationLink(destination: FoodDetailView(food: food), label: {
                 VStack {
                     Text(food.name)
                         .bold()
                         .font(.title)
                         .padding()
                     Text("Brand: \(food.brand)")
-                    Text("Serving Size: \(food.servingSize)")
+                    Text("Serving Size: \(food.servingSizeQty) \(food.prefferedUnit)")
                 }
                 
             })
@@ -29,6 +29,6 @@ struct AddFoodRow: View {
 
 struct AddFoodRow_Previews: PreviewProvider {
     static var previews: some View {
-        AddFoodRow(food: Food(name: "Pizza", brand: "" , servingSize: "1 slice", calories: 1, protein: 1, carbs: 1, fat: 1))
+        AddFoodRow(food: Food(name: "Pizza", brand: "" , servingSizeQty: 1, prefferedUnit: "g", unitOfMeasurement: "", calories: 1, protein: 1, carbs: 1, fat: 1))
     }
 }

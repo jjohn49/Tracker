@@ -11,7 +11,8 @@ struct CreateCustomFoodView: View {
     
     @State var foodName: String = ""
     @State var foodBrand: String = ""
-    @State var foodServingSize: String = ""
+    @State var foodServingSize: Float = 0
+    @State var foodServingUnit: String = ""
     @State var foodAmount: String = ""
     @State var foodCals: String = ""
     @State var foodPro: String = ""
@@ -25,7 +26,7 @@ struct CreateCustomFoodView: View {
     var body: some View {
         NavigationView {
             VStack{
-                inputFoodDetails(foodName: $foodName, foodBrand: $foodBrand, foodServingSize: $foodServingSize, foodAmount: $foodAmount, foodCals: $foodCals, foodPro: $foodPro, foodCarbs: $foodCarbs, foodFat: $foodFat)
+                inputFoodDetails(foodName: $foodName, foodBrand: $foodBrand, foodServingSize: $foodServingSize, foodServingUnit: $foodServingUnit, foodAmount: $foodAmount, foodCals: $foodCals, foodPro: $foodPro, foodCarbs: $foodCarbs, foodFat: $foodFat)
                 Button (action: {
                     //makes sure everything is satisfied so the app doesn't crash
                     if inputIsNotEmpty{
@@ -45,11 +46,11 @@ struct CreateCustomFoodView: View {
     }
     func createFood() -> Food{
         //chcks to see if all fields were satisfied
-        if !foodName.isEmpty && !foodServingSize.isEmpty && !foodAmount.isEmpty && !foodCals.isEmpty && !foodPro.isEmpty && !foodCarbs.isEmpty && !foodFat.isEmpty {
+        if !foodName.isEmpty && foodServingSize != 0 && !foodAmount.isEmpty && !foodCals.isEmpty && !foodPro.isEmpty && !foodCarbs.isEmpty && !foodFat.isEmpty {
             inputIsNotEmpty = true
-            return Food(name: foodName, brand: foodBrand, servingSize: foodServingSize, calories: Float(foodCals)!, protein: Float(foodPro)!, carbs: Float(foodCarbs)!, fat: Float(foodFat)!)
+            return Food(name: foodName, brand: foodBrand, servingSizeQty: foodServingSize, prefferedUnit: foodServingUnit, unitOfMeasurement: foodServingUnit, calories: Float(foodCals)!, protein: Float(foodPro)!, carbs: Float(foodCarbs)!, fat: Float(foodFat)!)
         }
-        return Food(name: "", brand: "", servingSize: "", calories: 0, protein: 0, carbs: 0, fat: 0)
+        return Food(name: "", brand: "", servingSizeQty: 0, prefferedUnit: "", unitOfMeasurement: "", calories: 0, protein: 0, carbs: 0, fat: 0)
     }
     
     
@@ -58,7 +59,8 @@ struct CreateCustomFoodView: View {
 struct inputFoodDetails: View{
     @Binding var foodName: String
     @Binding var foodBrand: String
-    @Binding  var foodServingSize: String
+    @Binding  var foodServingSize: Float
+    @Binding var foodServingUnit: String
     @Binding var foodAmount: String
     @Binding  var foodCals: String
     @Binding  var foodPro: String
@@ -76,7 +78,7 @@ struct inputFoodDetails: View{
 struct NameServingSizeAndAmount: View{
     @Binding var name: String
     @Binding var brand: String
-    @Binding var servingSize: String
+    @Binding var servingSize: Float
     @Binding var amount: String
     
     var body: some View{
@@ -85,7 +87,7 @@ struct NameServingSizeAndAmount: View{
             TextField("Food Name", text: $name).font(.title).padding()
         }
         TextField("Brand (optional)", text: $brand).background(.mint).font(.subheadline)
-        TextField("Serving Size", text: $servingSize).background(.mint).font(.subheadline)
+        TextField("Serving Size", value: $servingSize, formatter: NumberFormatter()).background(.mint).font(.subheadline)
         TextField("# of servings", text: $amount).background(.mint).font(.subheadline)
     }
 }

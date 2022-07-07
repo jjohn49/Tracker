@@ -15,12 +15,14 @@ struct Food: Identifiable, Codable {
     var id = UUID()
     let name: String
     let brand: String
-    let servingSize: String
+    let servingSizeQty: Float
     var numOfServ: Float = 1
-    let calories: Float
-    let protein: Float
-    let carbs: Float
-    let fat: Float
+    let prefferedUnit: String
+    var unitOfMeasurement: String
+    var calories: Float
+    var protein: Float
+    var carbs: Float
+    var fat: Float
     
 }
 

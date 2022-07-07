@@ -5,7 +5,7 @@
 //  Created by John Johnston on 6/13/22.
 //
 
-import SwiftUI
+//import SwiftUI
 import Foundation
 
 
@@ -49,9 +49,7 @@ struct FoodSearchResponse: Hashable ,Codable{
             var nf_serving_size_unit : String? = ""
             
             func upcResonse()->[FoodSearchResponse.hit]{
-                
                 return [FoodSearchResponse.hit(_index: "0", _type: "item", _id: item_id ?? "" , _score: 12, fields: self)]
-                
             }
         }
     }
@@ -119,7 +117,7 @@ class FoodResponse: ObservableObject{
                     //this will tie into the upc view
                     }else {
                         let decodeFoodResponse = try JSONDecoder().decode(FoodSearchResponse.hit.Field.self, from: data)
-                        print(decodeFoodResponse)
+                        //print(decodeFoodResponse)
                         self?.foodSearchRespnse = decodeFoodResponse.upcResonse()
                     }
                 } catch let error{

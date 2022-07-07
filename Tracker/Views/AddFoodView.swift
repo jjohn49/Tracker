@@ -21,13 +21,13 @@ struct AddFoodView: View {
     
     @State private var show: Bool = false
     
-    @State var ret: String = "Nothing"
+    //@State var ret: String = "Nothing"
     
     var body: some View {
         VStack{
             VStack(alignment: .leading) {
                 SearchBar(searchFood: $searchFood, searching: $searching, hits: hits)
-                Text("\(ret)")
+                //Text("\(ret)")
                     .navigationTitle(searching ? "Searching Food" : (searchFood.isEmpty ? "Search A Food" : searchFood))
                     .toolbar{
                         ToolbarItem (placement: .navigationBarLeading , content: {
@@ -52,7 +52,7 @@ struct AddFoodView: View {
             List{
                 if !hits.foodSearchRespnse.isEmpty{
                     ForEach(hits.foodSearchRespnse, id: \.self){ hit in
-                        let tempFood = Food(name: hit.fields.item_name ?? "" , brand: hit.fields.brand_name ?? "" , servingSize: hit.fields.nf_serving_size_unit ?? "", calories: hit.fields.nf_calories ?? 0, protein: hit.fields.nf_protein ?? 0, carbs: hit.fields.nf_total_carbohydrate ?? 0, fat: hit.fields.nf_total_fat ?? 0)
+                        let tempFood = Food(name: hit.fields.item_name ?? "" , brand: hit.fields.brand_name ?? "" , servingSizeQty: hit.fields.nf_serving_size_qty ?? 0, prefferedUnit: hit.fields.nf_serving_size_unit ?? "", unitOfMeasurement: hit.fields.nf_serving_size_unit ??  "", calories: hit.fields.nf_calories ?? 0, protein: hit.fields.nf_protein ?? 0, carbs: hit.fields.nf_total_carbohydrate ?? 0, fat: hit.fields.nf_total_fat ?? 0)
                         AddFoodRow(food: tempFood)
                     }
                 }else if searchFood != "" && !searching{
@@ -71,11 +71,11 @@ struct AddFoodView: View {
         switch result {
             case .success(let result):
                 let code = result.string
-                ret = code
+                //ret = code
                 print("Code is \(code)")
                 hits.getResponse(food: code, isUPCCode: true)
             case .failure(let error):
-                ret = error.localizedDescription
+                //ret = error.localizedDescription
                 print("Scan Failed \(error.localizedDescription)")
         }
         
