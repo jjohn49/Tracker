@@ -13,6 +13,13 @@
 		1E35F59C28708371008D2379 /* NutritionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E35F59B28708371008D2379 /* NutritionView.swift */; };
 		1E35F59E287083C2008D2379 /* FoodConsumedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E35F59D287083C2008D2379 /* FoodConsumedListView.swift */; };
 		1E3D2F1E2852A15600E4BC3C /* FoodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3D2F1D2852A15600E4BC3C /* FoodDetailView.swift */; };
+		1E69E3B62878678F00D8CCF6 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E69E3B52878678F00D8CCF6 /* WidgetKit.framework */; };
+		1E69E3B82878678F00D8CCF6 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E69E3B72878678F00D8CCF6 /* SwiftUI.framework */; };
+		1E69E3BB2878678F00D8CCF6 /* Track_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E69E3BA2878678F00D8CCF6 /* Track_Widget.swift */; };
+		1E69E3BE2878679000D8CCF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E69E3BD2878679000D8CCF6 /* Assets.xcassets */; };
+		1E69E3C02878679000D8CCF6 /* Track_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 1E69E3BC2878678F00D8CCF6 /* Track_Widget.intentdefinition */; };
+		1E69E3C12878679000D8CCF6 /* Track_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 1E69E3BC2878678F00D8CCF6 /* Track_Widget.intentdefinition */; };
+		1E69E3C42878679000D8CCF6 /* Track WidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1E69E3B32878678F00D8CCF6 /* Track WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1E70C4022863984C00B8B0D3 /* MacroGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E70C4012863984C00B8B0D3 /* MacroGoalView.swift */; };
 		1E89F149284FD56D00655DB1 /* TrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89F148284FD56D00655DB1 /* TrackerApp.swift */; };
 		1E89F14B284FD56D00655DB1 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E89F14A284FD56D00655DB1 /* WelcomeView.swift */; };
@@ -33,6 +40,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1E69E3C22878679000D8CCF6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E89F13D284FD56D00655DB1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1E69E3B22878678F00D8CCF6;
+			remoteInfo = "Track WidgetExtension";
+		};
 		1E89F156284FD56E00655DB1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1E89F13D284FD56D00655DB1 /* Project object */;
@@ -49,12 +63,35 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1E69E3C52878679000D8CCF6 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				1E69E3C42878679000D8CCF6 /* Track WidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1E1B72AB28577F9100CE4CBB /* CreateCustomFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomFoodView.swift; sourceTree = "<group>"; };
 		1E2F5371287316F00005AF06 /* LiftGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftGoalView.swift; sourceTree = "<group>"; };
 		1E35F59B28708371008D2379 /* NutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionView.swift; sourceTree = "<group>"; };
 		1E35F59D287083C2008D2379 /* FoodConsumedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodConsumedListView.swift; sourceTree = "<group>"; };
 		1E3D2F1D2852A15600E4BC3C /* FoodDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailView.swift; sourceTree = "<group>"; };
+		1E69E3B32878678F00D8CCF6 /* Track WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Track WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E69E3B52878678F00D8CCF6 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		1E69E3B72878678F00D8CCF6 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		1E69E3BA2878678F00D8CCF6 /* Track_Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track_Widget.swift; sourceTree = "<group>"; };
+		1E69E3BC2878678F00D8CCF6 /* Track_Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Track_Widget.intentdefinition; sourceTree = "<group>"; };
+		1E69E3BD2878679000D8CCF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1E69E3BF2878679000D8CCF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1E69E3C92878752700D8CCF6 /* Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tracker.entitlements; sourceTree = "<group>"; };
+		1E69E3CA287879F900D8CCF6 /* Track WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Track WidgetExtension.entitlements"; sourceTree = "<group>"; };
 		1E70C4012863984C00B8B0D3 /* MacroGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroGoalView.swift; sourceTree = "<group>"; };
 		1E89F145284FD56D00655DB1 /* Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E89F148284FD56D00655DB1 /* TrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerApp.swift; sourceTree = "<group>"; };
@@ -78,6 +115,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1E69E3B02878678F00D8CCF6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E69E3B82878678F00D8CCF6 /* SwiftUI.framework in Frameworks */,
+				1E69E3B62878678F00D8CCF6 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1E89F142284FD56D00655DB1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -148,12 +194,35 @@
 			path = Styles;
 			sourceTree = "<group>";
 		};
+		1E69E3B42878678F00D8CCF6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1E69E3B52878678F00D8CCF6 /* WidgetKit.framework */,
+				1E69E3B72878678F00D8CCF6 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1E69E3B92878678F00D8CCF6 /* Track Widget */ = {
+			isa = PBXGroup;
+			children = (
+				1E69E3BA2878678F00D8CCF6 /* Track_Widget.swift */,
+				1E69E3BC2878678F00D8CCF6 /* Track_Widget.intentdefinition */,
+				1E69E3BD2878679000D8CCF6 /* Assets.xcassets */,
+				1E69E3BF2878679000D8CCF6 /* Info.plist */,
+			);
+			path = "Track Widget";
+			sourceTree = "<group>";
+		};
 		1E89F13C284FD56D00655DB1 = {
 			isa = PBXGroup;
 			children = (
+				1E69E3CA287879F900D8CCF6 /* Track WidgetExtension.entitlements */,
 				1E89F147284FD56D00655DB1 /* Tracker */,
 				1E89F158284FD56E00655DB1 /* TrackerTests */,
 				1E89F162284FD56E00655DB1 /* TrackerUITests */,
+				1E69E3B92878678F00D8CCF6 /* Track Widget */,
+				1E69E3B42878678F00D8CCF6 /* Frameworks */,
 				1E89F146284FD56D00655DB1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -164,6 +233,7 @@
 				1E89F145284FD56D00655DB1 /* Tracker.app */,
 				1E89F155284FD56E00655DB1 /* TrackerTests.xctest */,
 				1E89F15F284FD56E00655DB1 /* TrackerUITests.xctest */,
+				1E69E3B32878678F00D8CCF6 /* Track WidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -171,6 +241,7 @@
 		1E89F147284FD56D00655DB1 /* Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				1E69E3C92878752700D8CCF6 /* Tracker.entitlements */,
 				1E89F148284FD56D00655DB1 /* TrackerApp.swift */,
 				1E35F59828708111008D2379 /* Views */,
 				1E35F59A287081F5008D2379 /* Variables */,
@@ -209,6 +280,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1E69E3B22878678F00D8CCF6 /* Track WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E69E3C82878679000D8CCF6 /* Build configuration list for PBXNativeTarget "Track WidgetExtension" */;
+			buildPhases = (
+				1E69E3AF2878678F00D8CCF6 /* Sources */,
+				1E69E3B02878678F00D8CCF6 /* Frameworks */,
+				1E69E3B12878678F00D8CCF6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Track WidgetExtension";
+			productName = "Track WidgetExtension";
+			productReference = 1E69E3B32878678F00D8CCF6 /* Track WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		1E89F144284FD56D00655DB1 /* Tracker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1E89F169284FD56E00655DB1 /* Build configuration list for PBXNativeTarget "Tracker" */;
@@ -216,10 +304,12 @@
 				1E89F141284FD56D00655DB1 /* Sources */,
 				1E89F142284FD56D00655DB1 /* Frameworks */,
 				1E89F143284FD56D00655DB1 /* Resources */,
+				1E69E3C52878679000D8CCF6 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1E69E3C32878679000D8CCF6 /* PBXTargetDependency */,
 			);
 			name = Tracker;
 			packageProductDependencies = (
@@ -275,6 +365,9 @@
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					1E69E3B22878678F00D8CCF6 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 					1E89F144284FD56D00655DB1 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
@@ -307,11 +400,20 @@
 				1E89F144284FD56D00655DB1 /* Tracker */,
 				1E89F154284FD56E00655DB1 /* TrackerTests */,
 				1E89F15E284FD56E00655DB1 /* TrackerUITests */,
+				1E69E3B22878678F00D8CCF6 /* Track WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1E69E3B12878678F00D8CCF6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E69E3BE2878679000D8CCF6 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1E89F143284FD56D00655DB1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -338,6 +440,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1E69E3AF2878678F00D8CCF6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E69E3C02878679000D8CCF6 /* Track_Widget.intentdefinition in Sources */,
+				1E69E3BB2878678F00D8CCF6 /* Track_Widget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1E89F141284FD56D00655DB1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -348,6 +459,7 @@
 				1E89F175284FE23D00655DB1 /* AddFoodView.swift in Sources */,
 				1EB6D2002858233300893FF8 /* Nutritionix.swift in Sources */,
 				1E89F14B284FD56D00655DB1 /* WelcomeView.swift in Sources */,
+				1E69E3C12878679000D8CCF6 /* Track_Widget.intentdefinition in Sources */,
 				1E1B72AC28577F9100CE4CBB /* CreateCustomFoodView.swift in Sources */,
 				1EDA5C962863E761003169D6 /* SetPreferencesView.swift in Sources */,
 				1E70C4022863984C00B8B0D3 /* MacroGoalView.swift in Sources */,
@@ -382,6 +494,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1E69E3C32878679000D8CCF6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1E69E3B22878678F00D8CCF6 /* Track WidgetExtension */;
+			targetProxy = 1E69E3C22878679000D8CCF6 /* PBXContainerItemProxy */;
+		};
 		1E89F157284FD56E00655DB1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1E89F144284FD56D00655DB1 /* Tracker */;
@@ -395,6 +512,62 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		1E69E3C62878679000D8CCF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Track WidgetExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5PWVWU8526;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Track Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Track Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hugh.Tracker.Track-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1E69E3C72878679000D8CCF6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Track WidgetExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 5PWVWU8526;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Track Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Track Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.hugh.Tracker.Track-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		1E89F167284FD56E00655DB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -512,8 +685,10 @@
 		1E89F16A284FD56E00655DB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Tracker/Tracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Tracker/Preview Content\"";
@@ -543,8 +718,10 @@
 		1E89F16B284FD56E00655DB1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Tracker/Tracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Tracker/Preview Content\"";
@@ -652,6 +829,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1E69E3C82878679000D8CCF6 /* Build configuration list for PBXNativeTarget "Track WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E69E3C62878679000D8CCF6 /* Debug */,
+				1E69E3C72878679000D8CCF6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1E89F140284FD56D00655DB1 /* Build configuration list for PBXProject "Tracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

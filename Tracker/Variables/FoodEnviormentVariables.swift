@@ -79,7 +79,7 @@ class FoodEnvVar: ObservableObject{
     
     //saves all the food enviorment variables to user defaults
     func saveToDefaults() {
-        let defaults = UserDefaults.standard
+        let defaults = UserDefaults(suiteName: "group.com.hugh.Tracker")!
         defaults.set(setPreferences, forKey: "setPreferences")
         
         //encodes the custom struct to json to save to user defaults
@@ -102,7 +102,7 @@ class FoodEnvVar: ObservableObject{
 
     //Fetches data fro m UserDefaults so settings are saved persistently
     func fetchFromDefaults(){
-        let defaults = UserDefaults.standard
+        let defaults = UserDefaults(suiteName: "group.com.hugh.Tracker")!
         setPreferences = defaults.bool(forKey: "setPreferences")
         
         if let encodedFoodList = defaults.object(forKey: "foodConsumedListVar") as? Data {
