@@ -11,6 +11,9 @@ struct FoodDetailView: View {
     
     @EnvironmentObject var foodEnvVar: FoodEnvVar
     
+    //allows button to close this view when food is added
+    @Environment(\.dismiss) var dismiss
+    
     @State var food: Food
     
     let formatter: NumberFormatter = {
@@ -60,6 +63,7 @@ struct FoodDetailView: View {
             Button(action: {
                 foodEnvVar.updateFoodEnvVars(food: food)
                 //print("Console is working")
+                dismiss()
             }, label: {
                 Text("Add \(food.servingSizeQty) \(food.unitOfMeasurement) of \(food.name) To The Food Consumed List").padding(EdgeInsets(top: 5, leading: 50, bottom: 5, trailing: 50))
             }).background(.tint).foregroundColor(.white).cornerRadius(10).padding()
