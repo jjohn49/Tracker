@@ -66,13 +66,19 @@ struct MacroEntry: TimelineEntry {
     let fat: Float
 }
 
+struct CircleView: View {
+    var body: some View{
+        Circle().padding()
+    }
+}
+
 struct Track_WidgetEntryView : View {
     var entry: Provider.Entry
 
     @State var clicked: Bool = false
     
     var body: some View {
-        VStack {
+        /*VStack {
             HStack {
                 Text("Cal:")
                 Text(String(format: "%.0f", entry.calories) + "  /")
@@ -96,7 +102,9 @@ struct Track_WidgetEntryView : View {
                 Text(String(format: "%.0f", entry.fat) + "  /")
                 Text(String(format: "%.0f", entry.fatGoal))
             }
-        }
+        }*/
+        
+        CircleView()
     }
 }
 
