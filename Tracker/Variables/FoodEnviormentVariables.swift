@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import WidgetKit
 
 class FoodEnvVar: ObservableObject{
     
@@ -98,6 +99,9 @@ class FoodEnvVar: ObservableObject{
         defaults.set(totalCaloriesConsumedInADay, forKey: "totalCaloriesConsumedInADay")
         
         defaults.set(date, forKey: "date")
+        
+        //makes the widget update the timeline
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     //Fetches data fro m UserDefaults so settings are saved persistently

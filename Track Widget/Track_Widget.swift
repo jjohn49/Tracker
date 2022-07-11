@@ -25,7 +25,7 @@ struct Provider: IntentTimelineProvider {
         
         let defaults = UserDefaults(suiteName: "group.com.hugh.Tracker")
         
-        var entries: [MacroEntry] = []
+        /*var entries: [MacroEntry] = []
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
@@ -33,9 +33,13 @@ struct Provider: IntentTimelineProvider {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
             let entry = MacroEntry(date: entryDate, configuration: configuration, calorieGoal: (defaults?.float(forKey: "totalCaloriesAllowedInADat"))!, calories: (defaults?.float(forKey: "totalCaloriesConsumedInADay"))!, proteinGoal: (defaults?.float(forKey: "proteinGoal"))!, protein: (defaults?.float(forKey: "totalProteinConsumedInADay"))!, carbGoal: (defaults?.float(forKey: "carbGoal"))!, carb: (defaults?.float(forKey: "totalCarbsConsumedInADay"))!, fatGoal: (defaults?.float(forKey: "fatGoal"))!, fat: (defaults?.float(forKey: "totalFatConsumedInADay"))!)
             entries.append(entry)
-        }
+        }*/
+        
+        //Don't need an entire list of entries just need the current one
+        //Updates everytime the parent app saves to defaults
+        let entry = MacroEntry(date: Date(), configuration: configuration, calorieGoal: (defaults?.float(forKey: "totalCaloriesAllowedInADat"))!, calories: (defaults?.float(forKey: "totalCaloriesConsumedInADay"))!, proteinGoal: (defaults?.float(forKey: "proteinGoal"))!, protein: (defaults?.float(forKey: "totalProteinConsumedInADay"))!, carbGoal: (defaults?.float(forKey: "carbGoal"))!, carb: (defaults?.float(forKey: "totalCarbsConsumedInADay"))!, fatGoal: (defaults?.float(forKey: "fatGoal"))!, fat: (defaults?.float(forKey: "totalFatConsumedInADay"))!)
 
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+        let timeline = Timeline(entries: [entry], policy: .atEnd)
         completion(timeline)
     }
 }
