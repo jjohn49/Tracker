@@ -75,6 +75,8 @@ class FoodEnvVar: ObservableObject{
         totalCarbsConsumedInADay = 0
         totalFatConsumedInADay = 0
         foodCosumedListVar = []
+        
+        saveToDefaults()
     }
     //-------------------------------------------------------------------------
     
