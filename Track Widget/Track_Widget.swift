@@ -66,45 +66,63 @@ struct MacroEntry: TimelineEntry {
     let fat: Float
 }
 
-struct CircleView: View {
+struct Arc: Shape {
+    var startAngle: Angle
+    var endAngle: Angle
+    var clockwise: Bool
+
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.addArc(center: CGPoint(x: rect.midX, y: rect.midY), radius: rect.width / 2, startAngle: startAngle, endAngle: endAngle, clockwise: clockwise)
+
+        return path
+    }
+}
+
+struct RainbowView: View{
+    let calPercentage: Float
+    let proPercentage: Float
+    let carbPercentage: Float
+    let fatPercentage: Float
+    
     var body: some View{
-        Circle().padding()
+        
+        ZStack{
+            //first arc in pairs is always the gray one
+            Arc(startAngle: .degrees(180), endAngle: .degrees(0), clockwise: false).stroke(.gray, lineWidth: 20)
+            Arc(startAngle: .degrees(180), endAngle: .degrees((Double(calPercentage) - 1) * 180), clockwise: false).stroke(.blue, lineWidth: 20)
+            
+            //protein row
+            Arc(startAngle: .degrees(180), endAngle: .degrees(0), clockwise: false).stroke(.gray, lineWidth: 10)
+                .padding(18)
+            Arc(startAngle: .degrees(180), endAngle: .degrees((Double(proPercentage) - 1) * 180), clockwise: false).stroke(.green, lineWidth: 10)
+                .padding(18)
+            
+            //carb row
+            Arc(startAngle: .degrees(180), endAngle: .degrees(0), clockwise: false).stroke(.gray, lineWidth: 10)
+                .padding(31)
+            Arc(startAngle: .degrees(180), endAngle: .degrees((Double(carbPercentage) - 1) * 180), clockwise: false).stroke(.yellow, lineWidth: 10)
+                .padding(31)
+            
+            //fat row
+            Arc(startAngle: .degrees(180), endAngle: .degrees(0), clockwise: false).stroke(.gray, lineWidth: 10)
+                .padding(45)
+            Arc(startAngle: .degrees(180), endAngle: .degrees((Double(fatPercentage) - 1) * 180), clockwise: false).stroke(.red, lineWidth: 10)
+                .padding(45)
+        }
+        
     }
 }
 
 struct Track_WidgetEntryView : View {
     var entry: Provider.Entry
-
-    @State var clicked: Bool = false
     
     var body: some View {
-        /*VStack {
-            HStack {
-                Text("Cal:")
-                Text(String(format: "%.0f", entry.calories) + "  /")
-                Text(String(format: "%.0f", entry.calorieGoal))
-            }
-            
-            HStack {
-                Text("Pro: ")
-                Text(String(format: "%.0f", entry.protein) + "  /")
-                Text(String(format: "%.0f", entry.proteinGoal))
-            }
-            
-            HStack {
-                Text("Crb:")
-                Text(String(format: "%.0f", entry.carb) + "  /")
-                Text(String(format: "%.0f", entry.carbGoal))
-            }
-            
-            HStack {
-                Text("Fat:")
-                Text(String(format: "%.0f", entry.fat) + "  /")
-                Text(String(format: "%.0f", entry.fatGoal))
-            }
-        }*/
+        VStack {
+            Spacer(minLength: 30)
+            RainbowView(calPercentage: entry.calories/entry.calorieGoal, proPercentage: entry.protein/entry.proteinGoal, carbPercentage: entry.carb/entry.carbGoal, fatPercentage: entry.fat/entry.fatGoal).padding()
+        }
         
-        CircleView()
     }
 }
 
