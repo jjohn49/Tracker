@@ -24,13 +24,15 @@ struct FoodDetailView: View {
     
     var body: some View {
         VStack{
-            Text("Serving Size \(food.servingSizeQty) \(food.prefferedUnit)" ).font(.title).bold().padding()
+            Text("Standard Serving: " + String(format: "%.0f", food.servingSizeQty) + " \(food.prefferedUnit)" ).font(.title).bold().padding()
             Text("Brand: \(food.brand)")
             HStack{
                 Text("Amount Consumed:").padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)).font(.title3)
                 ZStack {
-                    RoundedRectangle(cornerRadius: 50).frame(width: 100, height: 50).padding(EdgeInsets(top: 1, leading: 10, bottom: 1, trailing: 10)).foregroundColor(.blue)
-                    TextField(String(food.numOfServ),value: $food.numOfServ, formatter: formatter).padding(EdgeInsets(top: 1, leading: 10, bottom: 1, trailing: 10)).frame(width: 100, height: 70, alignment: .trailing).foregroundColor(.white)
+                    //RoundedRectangle(cornerRadius: 50).frame(width: 100, height: 50).padding(EdgeInsets(top: 1, leading: 10, bottom: 1, trailing: 10)).foregroundColor(.blue)
+                    TextField(String(food.numOfServ),value: $food.numOfServ, formatter: formatter).background(content: {
+                        Circle().fill(.blue).frame(width: 90, height: 60)
+                    }).frame(width: 30, height: 30, alignment: .trailing).padding().foregroundColor(.white)
                 }
                 
                 Picker("Picker",selection: $food.unitOfMeasurement){
@@ -52,20 +54,20 @@ struct FoodDetailView: View {
                         food.carbs = food.carbs / 28.3495
                         food.fat = food.fat / 28.3495
                     }
-                })
+                }).padding()
             }.padding()
             HStack{
-                Text("Cal:\n" + String(food.calories * food.numOfServ)).padding()
-                Text("Pro:\n" + String(food.protein * food.numOfServ)).padding()
-                Text("Carb:\n" + String(food.carbs * food.numOfServ)).padding()
-                Text("Fat:\n" + String(food.fat * food.numOfServ)).padding()
-            }.background(.gray).cornerRadius(10)
+                Text("Cal:\n" + String(format: "%.0f", food.calories * food.numOfServ))
+                Text("Pro:\n" + String(format: "%.0f", food.protein * food.numOfServ))
+                Text("Carb:\n" + String(format: "%.0f", food.carbs * food.numOfServ))
+                Text("Fat:\n" + String(format: "%.0f", food.fat * food.numOfServ))
+            }.padding().background(.gray).cornerRadius(10)
             Button(action: {
                 foodEnvVar.updateFoodEnvVars(food: food)
                 //print("Console is working")
                 dismiss()
             }, label: {
-                Text("Add \(food.servingSizeQty) \(food.unitOfMeasurement) of \(food.name) To The Food Consumed List").padding(EdgeInsets(top: 5, leading: 50, bottom: 5, trailing: 50))
+                Text("Add " + String(format: "%.0f", food.numOfServ) + " \(food.unitOfMeasurement) of \(food.name) To The Food Consumed List").padding(EdgeInsets(top: 5, leading: 50, bottom: 5, trailing: 50))
             }).background(.tint).foregroundColor(.white).cornerRadius(10).padding()
         }.padding()
             .navigationTitle(food.name)

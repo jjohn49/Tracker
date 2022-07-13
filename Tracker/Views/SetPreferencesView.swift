@@ -49,7 +49,7 @@ struct MacroPreferences: View{
         Form{
             //Text("The Date is: \(foodEnvVar.dateToStr())")
             Section(header: Text(""), content: {
-                Text("Cals Per Day: \(foodEnvVar.totalCaloriesAllowedInADat)")
+                Text("Cals Per Day: " + String(format: "%.0f", foodEnvVar.totalCaloriesAllowedInADat))
             })
             
             Section(header: Text("Macros"), content: {
@@ -59,7 +59,7 @@ struct MacroPreferences: View{
                     TextField("Protein Goal: ", value: $foodEnvVar.proteinGoal, formatter: NumberFormatter()).onSubmit {
                         foodEnvVar.totalCaloriesAllowedInADat += foodEnvVar.proteinGoal * 4
                         setPref()
-                    }.padding()
+                    }.padding().keyboardType(.decimalPad)
                     Stepper{
                         Text("")
                     }onIncrement: {
@@ -79,7 +79,7 @@ struct MacroPreferences: View{
                     TextField("Carb Goal: ", value: $foodEnvVar.carbGoal, formatter: NumberFormatter()).onSubmit {
                         foodEnvVar.totalCaloriesAllowedInADat += foodEnvVar.carbGoal * 4
                         setPref()
-                    }.padding()
+                    }.padding().keyboardType(.decimalPad)
                     Stepper{
                         Text("")
                     }onIncrement: {
@@ -99,7 +99,7 @@ struct MacroPreferences: View{
                     TextField("Fat Goal:", value: $foodEnvVar.fatGoal, formatter: NumberFormatter()).onSubmit {
                         foodEnvVar.totalCaloriesAllowedInADat += foodEnvVar.fatGoal * 8
                         setPref()
-                    }.padding()
+                    }.padding().keyboardType(.decimalPad)
                     Stepper{
                         Text("")
                     }onIncrement: {
