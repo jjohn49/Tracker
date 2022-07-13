@@ -85,7 +85,9 @@ struct RainbowView: View{
     let carbPercentage: Float
     let fatPercentage: Float
     
+    
     var body: some View{
+
         
         ZStack{
             //first arc in pairs is always the gray one
