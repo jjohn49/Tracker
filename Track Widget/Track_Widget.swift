@@ -91,23 +91,23 @@ struct RainbowView: View{
         
         ZStack{
             //first arc in pairs is always the gray one
-            Arc(startAngle: .degrees(180), endAngle: .degrees(0), clockwise: false).stroke(.gray, lineWidth: 20)
+            Arc(startAngle: .degrees(180), endAngle: .degrees(0), clockwise: false).stroke(.blue.opacity(0.5), lineWidth: 20)
             Arc(startAngle: .degrees(180), endAngle: .degrees((Double(calPercentage) - 1) * 180), clockwise: false).stroke(.blue, lineWidth: 20)
             
             //protein row
-            Arc(startAngle: .degrees(180), endAngle: .degrees(0), clockwise: false).stroke(.gray, lineWidth: 10)
+            Arc(startAngle: .degrees(180), endAngle: .degrees(0), clockwise: false).stroke(Color("WidgetBackground").opacity(0.5), lineWidth: 10)
                 .padding(18)
-            Arc(startAngle: .degrees(180), endAngle: .degrees((Double(proPercentage) - 1) * 180), clockwise: false).stroke(.green, lineWidth: 10)
+            Arc(startAngle: .degrees(180), endAngle: .degrees((Double(proPercentage) - 1) * 180), clockwise: false).stroke(Color("WidgetBackground"), lineWidth: 10)
                 .padding(18)
             
             //carb row
-            Arc(startAngle: .degrees(180), endAngle: .degrees(0), clockwise: false).stroke(.gray, lineWidth: 10)
+            Arc(startAngle: .degrees(180), endAngle: .degrees(0), clockwise: false).stroke(.yellow.opacity(0.5), lineWidth: 10)
                 .padding(31)
             Arc(startAngle: .degrees(180), endAngle: .degrees((Double(carbPercentage) - 1) * 180), clockwise: false).stroke(.yellow, lineWidth: 10)
                 .padding(31)
             
             //fat row
-            Arc(startAngle: .degrees(180), endAngle: .degrees(0), clockwise: false).stroke(.gray, lineWidth: 10)
+            Arc(startAngle: .degrees(180), endAngle: .degrees(0), clockwise: false).stroke(.red.opacity(0.5), lineWidth: 10)
                 .padding(45)
             Arc(startAngle: .degrees(180), endAngle: .degrees((Double(fatPercentage) - 1) * 180), clockwise: false).stroke(.red, lineWidth: 10)
                 .padding(45)
@@ -123,7 +123,7 @@ struct Track_WidgetEntryView : View {
         VStack {
             Spacer(minLength: 30)
             RainbowView(calPercentage: entry.calories/entry.calorieGoal, proPercentage: entry.protein/entry.proteinGoal, carbPercentage: entry.carb/entry.carbGoal, fatPercentage: entry.fat/entry.fatGoal).padding()
-        }
+        }.background(.teal)
         
     }
 }

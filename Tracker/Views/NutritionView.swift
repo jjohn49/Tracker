@@ -7,6 +7,32 @@
 
 import SwiftUI
 
+
+
+struct RainbowView: View{
+    let calPercentage: Float
+    let proPercentage: Float
+    let carbPercentage: Float
+    let fatPercentage: Float
+    
+    
+    var body: some View{
+
+        
+        ZStack{
+            ProgressView("", value:  calPercentage).progressViewStyle(ArcProgressViewStyle(lineWidth: 50, color: .blue)).frame(width: 325)
+            
+            ProgressView("", value: proPercentage).progressViewStyle(ArcProgressViewStyle(lineWidth: 30,color: Color("Forest"))).frame(width: 225)
+            
+            ProgressView("", value: carbPercentage).progressViewStyle(ArcProgressViewStyle(lineWidth: 30, color: .yellow)).frame(width: 140)
+            
+            ProgressView("", value: fatPercentage).progressViewStyle(ArcProgressViewStyle(lineWidth: 30, color: .red)).frame(width: 60)
+        }
+        
+    }
+}
+
+
 struct NutritionView: View {
     
     //maybe make these enviorment variables so that they can be changed by multiple views
@@ -14,53 +40,42 @@ struct NutritionView: View {
     
     //gets the percetage of hoe many calories you've eaten compared
     //to how much you are alowed to eat in a day
-    func getPercentage(consumed: Float, allowed: Float)->Float{
-        return consumed/allowed
-    }
+    
     
     //created this because i don't want to modify foodEnvVar.Date
     @State var selecteddDate: Date
     
     var body: some View {
-        let caloriesLeft = foodEnvVar.totalCaloriesAllowedInADat - foodEnvVar.totalCaloriesConsumedInADay
         NavigationView {
             VStack{
                 //this date picker will allow you to access the data from other days
                 //Text(String(foodEnvVar.isItANewDay()))
-                
+                Spacer()
                 DatePicker("", selection: $foodEnvVar.date, displayedComponents: [.date])
                     .frame(alignment: .center)
-                VStack {
-                    Text("Calories Left: " + String(caloriesLeft)).padding().font(.title2)
-                    ProgressView(value: getPercentage(consumed: foodEnvVar.totalCaloriesConsumedInADay, allowed: foodEnvVar.totalCaloriesAllowedInADat))
-                        .progressViewStyle(RoundedRectProgressViewStyle())
-                        .padding(EdgeInsets(top: 20, leading: 30, bottom: 20, trailing: 30))
-                }.background(.mint).cornerRadius(10)
+                RainbowView(calPercentage: foodEnvVar.totalCarbsConsumedInADay/foodEnvVar.totalCaloriesAllowedInADat, proPercentage: foodEnvVar.totalProteinConsumedInADay/foodEnvVar.proteinGoal, carbPercentage: foodEnvVar.totalCarbsConsumedInADay/foodEnvVar.carbGoal, fatPercentage: foodEnvVar.totalFatConsumedInADay/foodEnvVar.fatGoal)
+                
+                
                 VStack{
-                    Text("Protein: " + String(foodEnvVar.totalProteinConsumedInADay) + "g")
-                    ProgressView(value: getPercentage(consumed: foodEnvVar.totalProteinConsumedInADay, allowed: foodEnvVar.proteinGoal))
-                        .progressViewStyle(RoundedRectProgressViewStyle())
-                    
-                    Text("Carbs: " + String(foodEnvVar.totalCarbsConsumedInADay) + "g")
-                    ProgressView(value: getPercentage(consumed: foodEnvVar.totalCarbsConsumedInADay, allowed: foodEnvVar.carbGoal)).progressViewStyle(RoundedRectProgressViewStyle())
-                    Text("Fat: " + String(foodEnvVar.totalFatConsumedInADay) + "g")
-                    ProgressView(value: getPercentage(consumed: foodEnvVar.totalFatConsumedInADay, allowed: foodEnvVar.fatGoal)).progressViewStyle(RoundedRectProgressViewStyle())
-                }
-                .padding(EdgeInsets(top: 10, leading: 30, bottom: 20, trailing: 30))
-                .background(.tint)
-                .cornerRadius(10)
-                //add better styling
-                /*Button(action: {
-                    foodEnvVar.totalCaloriesConsumedInADay = 0
-                    foodEnvVar.totalProteinConsumedInADay = 0
-                    foodEnvVar.totalCarbsConsumedInADay = 0
-                    foodEnvVar.totalFatConsumedInADay = 0
-                    foodEnvVar.saveToDefaults()
-                }, label: {
-                    Text("Clear")
-                })*/
+                    Text("Calories left: " + String(format: "%.0f", (foodEnvVar.totalCaloriesAllowedInADat - foodEnvVar.totalFatConsumedInADay))).foregroundColor(.blue).bold().font(.title2)
+                    Text("Protein left: " + String(format: "%.0f",  foodEnvVar.proteinGoal - foodEnvVar.totalProteinConsumedInADay)).foregroundColor(Color("Forest")).bold().font(.title2)
+                    Text("Protein left: " + String(format: "%.0f", foodEnvVar.carbGoal - foodEnvVar.totalCarbsConsumedInADay)).foregroundColor(.yellow).bold().font(.title2)
+                    Text("Protein left: " + String(format: "%.0f", foodEnvVar.fatGoal - foodEnvVar.totalFatConsumedInADay)).foregroundColor(.red).bold().font(.title2)
+                }.padding()
+                
+                Spacer(minLength: 60)
             }
-            .navigationTitle("Macros")
+            .navigationTitle("Macros").padding().background(.mint).toolbar(content: {
+                ToolbarItem(content: {
+                    Button(action: {
+                        //FORCE RESET
+                        //ONLY FOR DEBUGGING
+                        foodEnvVar.newDay()
+                    }, label: {
+                        Text("Reset")
+                    })
+                })
+            })
         }
     }
 }
