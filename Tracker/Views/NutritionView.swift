@@ -53,14 +53,18 @@ struct NutritionView: View {
                 Spacer()
                 DatePicker("", selection: $foodEnvVar.date, displayedComponents: [.date])
                     .frame(alignment: .center)
-                RainbowView(calPercentage: foodEnvVar.totalCarbsConsumedInADay/foodEnvVar.totalCaloriesAllowedInADat, proPercentage: foodEnvVar.totalProteinConsumedInADay/foodEnvVar.proteinGoal, carbPercentage: foodEnvVar.totalCarbsConsumedInADay/foodEnvVar.carbGoal, fatPercentage: foodEnvVar.totalFatConsumedInADay/foodEnvVar.fatGoal)
+                RainbowView(calPercentage: foodEnvVar.totalCaloriesConsumedInADay/foodEnvVar.totalCaloriesAllowedInADat, proPercentage: foodEnvVar.totalProteinConsumedInADay/foodEnvVar.proteinGoal, carbPercentage: foodEnvVar.totalCarbsConsumedInADay/foodEnvVar.carbGoal, fatPercentage: foodEnvVar.totalFatConsumedInADay/foodEnvVar.fatGoal)
                 
                 
                 VStack{
-                    Text("Calories left: " + String(format: "%.0f", (foodEnvVar.totalCaloriesAllowedInADat - foodEnvVar.totalFatConsumedInADay))).foregroundColor(.blue).bold().font(.title2)
+                    Text("Calories left: " + String(format: "%.0f", foodEnvVar.totalCaloriesAllowedInADat - foodEnvVar.totalCaloriesConsumedInADay)).foregroundColor(.blue).bold().font(.title2)
+                    Text("\(foodEnvVar.totalCaloriesConsumedInADay)")
                     Text("Protein left: " + String(format: "%.0f",  foodEnvVar.proteinGoal - foodEnvVar.totalProteinConsumedInADay)).foregroundColor(Color("Forest")).bold().font(.title2)
-                    Text("Protein left: " + String(format: "%.0f", foodEnvVar.carbGoal - foodEnvVar.totalCarbsConsumedInADay)).foregroundColor(.yellow).bold().font(.title2)
-                    Text("Protein left: " + String(format: "%.0f", foodEnvVar.fatGoal - foodEnvVar.totalFatConsumedInADay)).foregroundColor(.red).bold().font(.title2)
+                    Text("\(foodEnvVar.totalProteinConsumedInADay)")
+                    Text("Carbs left: " + String(format: "%.0f", foodEnvVar.carbGoal - foodEnvVar.totalCarbsConsumedInADay)).foregroundColor(.yellow).bold().font(.title2)
+                    Text("\(foodEnvVar.totalCarbsConsumedInADay)")
+                    Text("Fat left: " + String(format: "%.0f", foodEnvVar.fatGoal - foodEnvVar.totalFatConsumedInADay)).foregroundColor(.red).bold().font(.title2)
+                    Text("\(foodEnvVar.totalFatConsumedInADay)")
                 }.padding()
                 
                 Spacer(minLength: 60)
