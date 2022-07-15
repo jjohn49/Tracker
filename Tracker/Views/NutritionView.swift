@@ -50,22 +50,16 @@ struct NutritionView: View {
             VStack{
                 //this date picker will allow you to access the data from other days
                 //Text(String(foodEnvVar.isItANewDay()))
-                Spacer()
-                DatePicker("", selection: $foodEnvVar.date, displayedComponents: [.date])
-                    .frame(alignment: .center)
+                //Spacer()
+                HStack {
+                    MacrosLeft().background(.quaternary).cornerRadius(10)
+                    DatePicker("", selection: $foodEnvVar.date, displayedComponents: [.date])
+                        .frame(alignment: .center)
+                }
                 RainbowView(calPercentage: foodEnvVar.totalCaloriesConsumedInADay/foodEnvVar.totalCaloriesAllowedInADat, proPercentage: foodEnvVar.totalProteinConsumedInADay/foodEnvVar.proteinGoal, carbPercentage: foodEnvVar.totalCarbsConsumedInADay/foodEnvVar.carbGoal, fatPercentage: foodEnvVar.totalFatConsumedInADay/foodEnvVar.fatGoal)
                 
                 
-                VStack{
-                    Text("Calories left: " + String(format: "%.0f", foodEnvVar.totalCaloriesAllowedInADat - foodEnvVar.totalCaloriesConsumedInADay)).foregroundColor(.blue).bold().font(.title2)
-                    Text("\(foodEnvVar.totalCaloriesConsumedInADay)")
-                    Text("Protein left: " + String(format: "%.0f",  foodEnvVar.proteinGoal - foodEnvVar.totalProteinConsumedInADay)).foregroundColor(Color("Forest")).bold().font(.title2)
-                    Text("\(foodEnvVar.totalProteinConsumedInADay)")
-                    Text("Carbs left: " + String(format: "%.0f", foodEnvVar.carbGoal - foodEnvVar.totalCarbsConsumedInADay)).foregroundColor(.yellow).bold().font(.title2)
-                    Text("\(foodEnvVar.totalCarbsConsumedInADay)")
-                    Text("Fat left: " + String(format: "%.0f", foodEnvVar.fatGoal - foodEnvVar.totalFatConsumedInADay)).foregroundColor(.red).bold().font(.title2)
-                    Text("\(foodEnvVar.totalFatConsumedInADay)")
-                }.padding()
+                
                 
                 Spacer(minLength: 60)
             }
@@ -88,5 +82,17 @@ struct NutritionView: View {
 struct NutritionView_Previews: PreviewProvider {
     static var previews: some View {
         NutritionView(selecteddDate: FoodEnvVar().date).environmentObject(FoodEnvVar())
+    }
+}
+
+struct MacrosLeft: View {
+    @EnvironmentObject var foodEnvVar: FoodEnvVar
+    var body: some View {
+        VStack{
+            Text("Calories left: " + String(format: "%.0f", foodEnvVar.totalCaloriesAllowedInADat - foodEnvVar.totalCaloriesConsumedInADay) + "g").foregroundColor(.blue).bold().font(.subheadline)
+            Text("Protein left: " + String(format: "%.0f",  foodEnvVar.proteinGoal - foodEnvVar.totalProteinConsumedInADay) + "g").foregroundColor(Color("Forest")).bold().font(.subheadline)
+            Text("Carbs left: " + String(format: "%.0f", foodEnvVar.carbGoal - foodEnvVar.totalCarbsConsumedInADay) + "g").foregroundColor(.yellow).bold().font(.subheadline)
+            Text("Fat left: " + String(format: "%.0f", foodEnvVar.fatGoal - foodEnvVar.totalFatConsumedInADay) + "g").foregroundColor(.red).bold().font(.subheadline)
+        }.padding()
     }
 }
