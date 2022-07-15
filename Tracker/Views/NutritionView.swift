@@ -20,13 +20,13 @@ struct RainbowView: View{
 
         
         ZStack{
-            ProgressView("", value:  calPercentage).progressViewStyle(ArcProgressViewStyle(lineWidth: 50, color: .blue)).frame(width: 325)
+            ProgressView("", value:  calPercentage).progressViewStyle(CircleProgressViewStyle(lineWidth: 50, color: .blue)).frame(width: 325)
             
-            ProgressView("", value: proPercentage).progressViewStyle(ArcProgressViewStyle(lineWidth: 30,color: Color("Forest"))).frame(width: 225)
+            ProgressView("", value: proPercentage).progressViewStyle(CircleProgressViewStyle(lineWidth: 30,color: Color("Forest"))).frame(width: 225)
             
-            ProgressView("", value: carbPercentage).progressViewStyle(ArcProgressViewStyle(lineWidth: 30, color: .yellow)).frame(width: 140)
+            ProgressView("", value: carbPercentage).progressViewStyle(CircleProgressViewStyle(lineWidth: 30, color: .yellow)).frame(width: 140)
             
-            ProgressView("", value: fatPercentage).progressViewStyle(ArcProgressViewStyle(lineWidth: 30, color: .red)).frame(width: 60)
+            ProgressView("", value: fatPercentage).progressViewStyle(CircleProgressViewStyle(lineWidth: 30, color: .red)).frame(width: 60)
         }
         
     }
@@ -63,7 +63,7 @@ struct NutritionView: View {
                 
                 Spacer(minLength: 60)
             }
-            .navigationTitle("Macros").padding().background(.mint).toolbar(content: {
+            .navigationTitle("Macros").padding().toolbar(content: {
                 ToolbarItem(content: {
                     Button(action: {
                         //FORCE RESET

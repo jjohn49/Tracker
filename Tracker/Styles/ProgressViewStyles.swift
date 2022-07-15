@@ -46,3 +46,16 @@ struct ArcProgressViewStyle: ProgressViewStyle {
         }
     }
 }
+
+
+struct CircleProgressViewStyle: ProgressViewStyle{
+    let lineWidth: CGFloat
+    let color: Color
+    func makeBody(configuration: Configuration) -> some View {
+        ZStack {
+            Circle().stroke(color.opacity(0.5),lineWidth: lineWidth)
+            Arc(startAngle: .degrees(180), endAngle: .degrees((configuration.fractionCompleted ?? 0) * 360 + 180), clockwise: false).stroke(color, lineWidth: lineWidth)
+        }
+        
+    }
+}

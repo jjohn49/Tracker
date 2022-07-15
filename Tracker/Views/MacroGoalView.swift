@@ -30,7 +30,7 @@ struct CalorieGoalRow: View {
             //Spacer()
             Text("gs")
             Text("Per Day").padding()
-        }.background(.mint).cornerRadius(10)
+        }.background(.blue).cornerRadius(10)
         
         //maybe add like a pie chart or something to get a breakdown of what percentage each macronutrient takes up in the calorie breakdown
     }
@@ -58,7 +58,7 @@ struct ProteinGoalRow: View {
                 foodEnvVar.saveToDefaults()
             }.padding()
 
-        }.background(.tint).cornerRadius(10)
+        }.background(Color("Forest")).cornerRadius(10)
     }
 }
 
@@ -84,7 +84,7 @@ struct CarbGoalRow: View {
                 foodEnvVar.saveToDefaults()
             }.padding()
 
-        }.background(.tertiary).cornerRadius(10)
+        }.background(.yellow).cornerRadius(10)
     }
 }
 
@@ -110,7 +110,7 @@ struct FatGoalRow: View {
                 foodEnvVar.saveToDefaults()
             }.padding()
 
-        }.background(.indigo).cornerRadius(10)
+        }.background(.red).cornerRadius(10)
     }
 }
 
