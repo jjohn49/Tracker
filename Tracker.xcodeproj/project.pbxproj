@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E0C4F072885F28700A5342D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0C4F062885F28700A5342D /* HealthKit.framework */; };
 		1E1B72AC28577F9100CE4CBB /* CreateCustomFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1B72AB28577F9100CE4CBB /* CreateCustomFoodView.swift */; };
 		1E2D01022875048A00D798EC /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 1E2D01012875048A00D798EC /* CodeScanner */; };
 		1E2F5372287316F00005AF06 /* LiftGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2F5371287316F00005AF06 /* LiftGoalView.swift */; };
@@ -78,6 +79,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1E0C4F062885F28700A5342D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		1E1B72AB28577F9100CE4CBB /* CreateCustomFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomFoodView.swift; sourceTree = "<group>"; };
 		1E2F5371287316F00005AF06 /* LiftGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftGoalView.swift; sourceTree = "<group>"; };
 		1E35F59B28708371008D2379 /* NutritionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionView.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E2D01022875048A00D798EC /* CodeScanner in Frameworks */,
+				1E0C4F072885F28700A5342D /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +200,7 @@
 		1E69E3B42878678F00D8CCF6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1E0C4F062885F28700A5342D /* HealthKit.framework */,
 				1E69E3B52878678F00D8CCF6 /* WidgetKit.framework */,
 				1E69E3B72878678F00D8CCF6 /* SwiftUI.framework */,
 			);
@@ -696,6 +700,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Need to use camera";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Tracker needs to share data";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Tracker needs your permission inorder to save data to HealthKit";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -729,6 +735,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Need to use camera";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Tracker needs to share data";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Tracker needs your permission inorder to save data to HealthKit";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -21,6 +21,7 @@ struct SetPreferencesView: View {
                 Button(action: {
                     foodEnvVar.setPreferences = true
                     foodEnvVar.saveToDefaults()
+                    foodEnvVar.reqFoodPermissionToHK()
                 }, label: {
                     Text("Set Goals").padding(EdgeInsets(top: 5, leading: 50, bottom: 5, trailing: 50))
                 }).padding().background(.tint).foregroundColor(.white).cornerRadius(10)

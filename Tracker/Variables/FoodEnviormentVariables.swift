@@ -7,6 +7,7 @@
 
 import Foundation
 import WidgetKit
+import HealthKit
 
 class FoodEnvVar: ObservableObject{
     
@@ -82,6 +83,7 @@ class FoodEnvVar: ObservableObject{
     
     //saves all the food enviorment variables to user defaults
     func saveToDefaults() {
+        
         let defaults = UserDefaults(suiteName: "group.com.hugh.Tracker")!
         defaults.set(setPreferences, forKey: "setPreferences")
         
@@ -101,6 +103,7 @@ class FoodEnvVar: ObservableObject{
         defaults.set(totalCaloriesConsumedInADay, forKey: "totalCaloriesConsumedInADay")
         
         defaults.set(date, forKey: "date")
+        
         
         //makes the widget update the timeline
         WidgetCenter.shared.reloadAllTimelines()
@@ -141,5 +144,55 @@ class FoodEnvVar: ObservableObject{
         totalCarbsConsumedInADay += food.carbs * food.numOfServ
         totalFatConsumedInADay += food.fat * food.numOfServ
         saveToDefaults()
+        saveFoodToHK(food: food)
+    }
+    
+    //works
+    func reqFoodPermissionToHK(){
+        if !HKHealthStore.isHealthDataAvailable(){
+            return
+        }
+        
+        let hk = HKHealthStore()
+        
+        let types = Set([
+            //set for all the hk datatypes that we want to request permission to use
+            HKObjectType.quantityType(forIdentifier: .dietaryEnergyConsumed)!,
+            HKObjectType.quantityType(forIdentifier: .dietaryProtein)!,
+            HKObjectType.quantityType(forIdentifier: .dietaryCarbohydrates)!,
+            HKObjectType.quantityType(forIdentifier: .dietaryFatTotal)!
+        ])
+        
+        hk.requestAuthorization(toShare: types, read: types, completion: { (success, error) in
+            if !success{
+                fatalError("REQUEST AUTHORIZATION ERROR:" + error!.localizedDescription)
+            }
+        })
+    }
+    
+    func saveFoodToHK(food: Food){
+        if !HKHealthStore.isHealthDataAvailable(){
+            return
+        }
+        
+        let hk = HKHealthStore()
+        
+        hk.save(createArrayOfMacroHKQuantitySamples(), withCompletion: { (success, error) in
+            if !success{
+                print(error!)
+            }
+            else{
+                print("Saved \(food.name)")
+            }
+        })
+    }
+    
+    func createArrayOfMacroHKQuantitySamples() -> [HKQuantitySample]{
+        return[
+            HKQuantitySample(type: .quantityType(forIdentifier: .dietaryEnergyConsumed)!, quantity: HKQuantity(unit: HKUnit.largeCalorie(), doubleValue: Double(totalCaloriesConsumedInADay)), start: Date(), end: Date()),
+            HKQuantitySample(type: .quantityType(forIdentifier: .dietaryProtein)!, quantity: HKQuantity(unit: HKUnit.gram(), doubleValue: Double(totalProteinConsumedInADay)), start: Date(), end: Date()),
+            HKQuantitySample(type: .quantityType(forIdentifier: .dietaryCarbohydrates)!, quantity: HKQuantity(unit: HKUnit.gram(), doubleValue: Double(totalCarbsConsumedInADay)), start: Date(), end: Date()),
+            HKQuantitySample(type: .quantityType(forIdentifier: .dietaryFatTotal)!, quantity: HKQuantity(unit: HKUnit.gram(), doubleValue: Double(totalFatConsumedInADay)), start: Date(), end: Date())
+        ]
     }
 }
